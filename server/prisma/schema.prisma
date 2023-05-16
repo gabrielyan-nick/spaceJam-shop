@@ -8,12 +8,83 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  email      String   @unique
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  email      String    @unique
   password   String
   name       String
-  phone      String   @default("")
-  avatarPath String   @default("/uploads/avatar.png") @map("avatar_path")
-  createdAt  DateTime @default(now()) @map("created_at")
-  updatedAt  DateTime @default(now()) @map("updated_at")
+  phone      String    @default("")
+  avatarPath String    @default("/uploads/avatar.png") @map("avatar_path")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+  orders     Order[]
+  reviews    Review[]
+  favorites  Product[]
+}
+
+model Product {
+  id              String      @id @default(auto()) @map("_id") @db.ObjectId
+  name            String      @unique
+  slug            String      @unique
+  description     String
+  price           Int
+  images          String[]
+  characteristics Json
+  category        Category    @relation(fields: [categoryId], references: [id])
+  categoryId      String      @map("category_id") @db.ObjectId
+  createdAt       DateTime    @default(now()) @map("created_at")
+  updatedAt       DateTime    @updatedAt @map("updated_at")
+  orderItems      OrderItem[]
+  reviews         Review[]
+  user            User?       @relation(fields: [userId], references: [id])
+  userId          String?     @db.ObjectId
+}
+
+model Category {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name      String    @unique
+  slug      String    @unique
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  product   Product[]
+}
+
+model Review {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  text      String
+  rating    Int
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @map("user_id") @db.ObjectId
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String   @map("product_id") @db.ObjectId
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
+
+model Order {
+  id        String          @id @default(auto()) @map("_id") @db.ObjectId
+  status    EnumOrderStatus @default(PENDING)
+  items     OrderItem[]
+  user      User            @relation(fields: [userId], references: [id])
+  userId    String          @map("user_id") @db.ObjectId
+  createdAt DateTime        @default(now()) @map("created_at")
+  updatedAt DateTime        @updatedAt @map("updated_at")
+}
+
+model OrderItem {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  price     Int
+  quantity  Int
+  order     Order    @relation(fields: [orderId], references: [id])
+  orderId   String   @map("order_id") @db.ObjectId
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String   @map("product_id") @db.ObjectId
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
+
+enum EnumOrderStatus {
+  PENDING
+  PAYED
+  SHIPPED
+  DELIVERED
 }

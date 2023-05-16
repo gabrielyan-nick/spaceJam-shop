@@ -18,9 +18,8 @@ export class AuthService {
     try {
       const result = await this.jwt.verifyAsync(refreshToken);
       const user = await this.findUserByCriteria('id', result);
-      const tokens = await this.issueTokens(user.id);
 
-      return { user: this.returnUserFields(user), ...tokens };
+      return this.getUserDataWithTokens(user);
     } catch (e) {
       throw new UnauthorizedException('Invalid refresh token');
     }
@@ -28,19 +27,8 @@ export class AuthService {
 
   async login(dto: LoginDto) {
     const user = await this.validateUser(dto);
-    const tokens = await this.issueTokens(user.id);
 
-    return { user: this.returnUserFields(user), ...tokens };
-  }
-
-  private async validateUser(dto: LoginDto) {
-    const user = await this.findUserByCriteria('email', dto);
-    if (!user) throw new NotFoundException('User not found');
-
-    const isValid = await argon2.verify(user.password, dto.password);
-    if (!isValid) throw new UnauthorizedException('Invalid password');
-
-    return user;
+    return this.getUserDataWithTokens(user);
   }
 
   async register(dto: AuthDto) {
@@ -54,9 +42,8 @@ export class AuthService {
         name: dto.name,
       },
     });
-    const tokens = await this.issueTokens(user.id);
 
-    return { user: this.returnUserFields(user), ...tokens };
+    return this.getUserDataWithTokens(user);
   }
 
   async findUserByCriteria(
@@ -66,10 +53,27 @@ export class AuthService {
     const userData = await this.prisma.user.findUnique({
       where: { [criteria]: user[criteria] },
     });
+
     return userData;
   }
 
-  private async issueTokens(userId: string) {
+  private async validateUser(dto: LoginDto) {
+    const user = await this.findUserByCriteria('email', dto);
+    if (!user) throw new NotFoundException('User not found');
+
+    const isValid = await argon2.verify(user.password, dto.password);
+    if (!isValid) throw new UnauthorizedException('Invalid password');
+
+    return user;
+  }
+
+  private getUserDataWithTokens(user: User) {
+    const tokens = this.issueTokens(user.id);
+
+    return { user: this.returnUserFields(user), ...tokens };
+  }
+
+  private issueTokens(userId: string) {
     const data = { id: userId };
     const accessToken = this.jwt.sign(data, { expiresIn: '1h' });
     const refreshToken = this.jwt.sign(data, { expiresIn: '7d' });
