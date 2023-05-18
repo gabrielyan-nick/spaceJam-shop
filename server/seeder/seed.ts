@@ -6,8 +6,7 @@ dotenv.config();
 const prisma = new PrismaClient();
 
 const createCategory = async () => {
-  const categoryNames = 'Галактики, Екзопланети, Супутники';
-  const categories = categoryNames.split(', ');
+  const categories = ['Зірки', 'Комети'];
 
   categories.forEach(
     async cat =>
@@ -24,8 +23,7 @@ const createProducts = async (quantity: number) => {
   const products: Product[] = [];
 
   for (let i = 0; i < quantity; i++) {
-    const productName = 'Чумацький Шлях';
-    const categoryName = 'Галактики';
+    const productName = 'PZ Кассіопеї';
 
     const product = await prisma.product.create({
       data: {
@@ -34,12 +32,16 @@ const createProducts = async (quantity: number) => {
         description: '',
         price: 5,
         images: [],
-        characteristics: {},
-        categoryId: '6463c8d72fcf39b2ecd3b9e8',
-        //   create: {
-        //     name: categoryName,
-        //     slug: generateSlug(categoryName),
-        //   },
+        characteristics: {
+          type: 'Червоний надгігант',
+          distance: '3400',
+          weight: '29',
+          radius: '1260−1340',
+          apparentMagnitude: '4,1 - 6,2',
+          constellation: 'Касіопея',
+          averageTemp: '3600',
+        },
+        categoryId: '6463f21ca162930f2c614619',
         reviews: {
           create: {
             rating: 5,
@@ -57,8 +59,8 @@ const createProducts = async (quantity: number) => {
 };
 
 async function main() {
-  //   await createProducts(1);
-  await createCategory();
+  // await createProducts(1);
+  //   await createCategory();
 }
 
 main()
@@ -646,9 +648,9 @@ export function generateSlug(str: string): string {
     });
   });
   return str
-    .replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-    .replace(/\s+/g, '-') // collapse whitespace and replace by -
-    .replace(/-+/g, '-') // collapse dashes
-    .replace(/^-+/, '') // trim - from start of text
+    .replace(/[^a-z0-9 -]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-+/, '')
     .replace(/-+$/, '');
 }

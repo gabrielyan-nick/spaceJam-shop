@@ -28,8 +28,8 @@ export class UserService {
             price: true,
             slug: true,
           },
-          ...selectObj,
         },
+        ...selectObj,
       },
     });
 
@@ -81,6 +81,6 @@ export class UserService {
       },
     });
 
-    return 'Success';
+    return { message: 'Success' };
   }
 }
