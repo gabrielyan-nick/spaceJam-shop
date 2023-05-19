@@ -9,15 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "@types/js-cookie": "^3.0.3",
     "@types/node": "20.2.1",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
+    "clsx": "^1.2.1",
+    "js-cookie": "^3.0.5",
     "next": "13.4.2",
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sass": "^1.62.1",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0"
   }
 }
