@@ -5,7 +5,10 @@ import {
 } from '@nestjs/common';
 import { Prisma, User } from '@prisma/client';
 import { PrismaService } from 'src/prisma.service';
-import { returnUserObject } from './return-user.object';
+import {
+  returnUserFavoritesObject,
+  returnUserObject,
+} from './return-user.object';
 import { UserDto } from './user.dto';
 import { hash } from 'argon2';
 
@@ -20,15 +23,7 @@ export class UserService {
       },
       select: {
         ...returnUserObject,
-        favorites: {
-          select: {
-            id: true,
-            images: true,
-            name: true,
-            price: true,
-            slug: true,
-          },
-        },
+        ...returnUserFavoritesObject,
         ...selectObj,
       },
     });
@@ -81,6 +76,13 @@ export class UserService {
       },
     });
 
-    return { message: 'Success' };
+    const favorites = this.prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        ...returnUserFavoritesObject,
+      },
+    });
+
+    return favorites;
   }
 }

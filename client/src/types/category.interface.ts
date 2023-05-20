@@ -3,3 +3,5 @@ export interface ICategory {
   name: string;
   slug: string;
 }
+
+export type UpdateCategory = Pick<ICategory, 'name'>;

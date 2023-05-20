@@ -23,7 +23,12 @@ export interface IAuthResponse extends ITokens {
   user: IUser;
 }
 
-export enum Tokens {
+export enum EnumTokens {
   AccessToken = 'accessToken',
   RefreshToken = 'refreshToken',
+}
+
+export enum EnumAuth {
+  Login = 'login',
+  Register = 'register',
 }

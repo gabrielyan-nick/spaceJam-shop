@@ -1,8 +1,8 @@
 import Cookies from 'js-cookie';
-import { IAuthResponse, ITokens, Tokens } from 'store/user/user.interface';
+import { IAuthResponse, ITokens, EnumTokens } from 'store/user/user.interface';
 
 export const getAccessToken = () => {
-  const accessToken = Cookies.get(Tokens.AccessToken);
+  const accessToken = Cookies.get(EnumTokens.AccessToken);
   return accessToken || null;
 };
 
@@ -11,13 +11,13 @@ export const getUserFromStorage = () => {
 };
 
 export const saveTokensStorage = (data: ITokens) => {
-  Cookies.set(Tokens.AccessToken, data.accessToken);
-  Cookies.set(Tokens.RefreshToken, data.refreshToken);
+  Cookies.set(EnumTokens.AccessToken, data.accessToken);
+  Cookies.set(EnumTokens.RefreshToken, data.refreshToken);
 };
 
 export const removeFromStorage = () => {
-  Cookies.remove(Tokens.AccessToken);
-  Cookies.remove(Tokens.RefreshToken);
+  Cookies.remove(EnumTokens.AccessToken);
+  Cookies.remove(EnumTokens.RefreshToken);
   localStorage.removeItem('user');
 };
 

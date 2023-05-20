@@ -5,7 +5,6 @@ import {
   Get,
   HttpCode,
   Param,
-  Patch,
   Post,
   Put,
   Query,
@@ -13,7 +12,6 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
-import { query } from 'express';
 import { GetAllProductDto } from './dto/get-all.product.dto';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { ProductDto } from './product.dto';

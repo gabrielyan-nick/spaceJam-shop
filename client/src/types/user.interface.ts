@@ -5,3 +5,8 @@ export interface IUser {
   avatarPath: string;
   phone: string;
 }
+
+export type UserUpdateType = Partial<Omit<IUser, 'id' | 'email'>> & {
+  password?: string;
+  email: string;
+};

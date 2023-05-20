@@ -7,3 +7,5 @@ export interface IReview {
   createdAt: string;
   user: IUser;
 }
+
+export type ReviewCreateType = Pick<IReview, 'text' | 'rating'>;

@@ -8,3 +8,15 @@ export const returnUserObject: Prisma.UserSelect = {
   password: false,
   phone: true,
 };
+
+export const returnUserFavoritesObject = {
+  favorites: {
+    select: {
+      id: true,
+      images: true,
+      name: true,
+      price: true,
+      slug: true,
+    },
+  },
+};
