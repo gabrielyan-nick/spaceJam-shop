@@ -1,12 +1,5 @@
 import '../styles/globals.css';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata = {
-  title: 'SpaceJam shop',
-  description: '',
-};
+import { Providers } from 'store/provider';
 
 export default function RootLayout({
   children,
@@ -19,7 +12,7 @@ export default function RootLayout({
         className="h-screen bg-gradient-to-tr from-[#09013D] via-[#890372] to-[#75F0E8]
 "
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
