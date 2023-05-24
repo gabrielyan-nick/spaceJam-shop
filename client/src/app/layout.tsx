@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import '../styles/globals.scss';
 import { Providers } from 'store/provider';
 
 export default function RootLayout({
@@ -8,10 +8,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ua">
-      <body
-        className="h-screen bg-gradient-to-tr from-[#09013D] via-[#890372] to-[#75F0E8]
-"
-      >
+      <body>
         <Providers>{children}</Providers>
       </body>
     </html>

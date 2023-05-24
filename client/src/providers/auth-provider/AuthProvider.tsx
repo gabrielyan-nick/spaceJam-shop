@@ -1,17 +1,22 @@
-import { TypeComponentAuthFields } from './auth-page.types';
+'use client';
+
 import { useActions } from 'hooks/useActions';
 import { useAuth } from 'hooks/useAuth';
-import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { FC, PropsWithChildren, ReactNode, useEffect } from 'react';
 import { StorageService } from 'services/storage.service';
+
+const protectedRoutes = ['/my-order', '/favorites'];
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const { user } = useAuth();
   const { checkAuth, logout } = useActions();
-  // const { pathname } = useRouter();
+  const router = useRouter();
   const pathname = usePathname();
+  const isProtectedRoute = protectedRoutes.some(route =>
+    pathname.startsWith(route),
+  );
 
   useEffect(() => {
     const accessToken = StorageService.getAccessToken();
@@ -23,34 +28,13 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     if (!refreshToken && user) logout();
   }, [pathname]);
 
-  return <>{children}</>;
+  useEffect(() => {
+    if (isProtectedRoute && !user) pathname !== '/' && router.replace('/');
+  }, [pathname]);
+
+  if (!isProtectedRoute || (user && isProtectedRoute)) return <>{children}</>;
+
+  return null;
 };
-
-// const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false });
-
-// const AuthProvider: FC<PropsWithChildren<TypeComponentAuthFields>> = ({
-//   Component: { isOnlyUser },
-//   children,
-// }) => {
-//   const { user } = useAuth();
-//   const { checkAuth, logout } = useActions();
-//   const { pathname } = useRouter();
-
-//   useEffect(() => {
-//     const accessToken = StorageService.getAccessToken();
-//     accessToken && checkAuth();
-//   }, []);
-
-//   useEffect(() => {
-//     const refreshToken = StorageService.getRefreshToken();
-//     if (!refreshToken && user) logout();
-//   }, [pathname]);
-
-//   return isOnlyUser ? (
-//     <DynamicCheckRole Component={{ isOnlyUser }}>{children}</DynamicCheckRole>
-//   ) : (
-//     <>{children}</>
-//   );
-// };
 
 export default AuthProvider;

@@ -16,6 +16,7 @@ export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(
   },
 );
 
+
 export const login = createAsyncThunk<IAuthResponse, IEmailPassword>(
   'auth/login',
   async (data, thunkApi) => {
