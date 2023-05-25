@@ -9,3 +9,4 @@ export { default as AuthButton } from './ui/AuthButton';
 export { default as Modal } from './ui/modal/Modal';
 export { default as AuthForm } from './ui/AuthForm';
 export { default as Field } from './ui/input/Field';
+export { default as Loader } from './ui/Loader';

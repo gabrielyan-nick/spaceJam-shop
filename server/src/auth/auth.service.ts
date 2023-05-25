@@ -4,7 +4,7 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { User } from '@prisma/client';
+import { Prisma, User } from '@prisma/client';
 import { PrismaService } from 'src/prisma.service';
 import { AuthDto, LoginDto } from './dto/auth.dto';
 import * as argon2 from 'argon2';
@@ -29,6 +29,29 @@ export class AuthService {
     const user = await this.validateUser(dto);
 
     return this.getUserDataWithTokens(user);
+  }
+
+  async googleLogin(req) {
+    const id: string = req.id;
+    const name: string = req.name.givenName;
+    const email: string = req.emails[0].value;
+
+    const userData = await this.prisma.user.findUnique({
+      where: { googleId: id },
+    } as Prisma.UserFindUniqueArgs);
+
+    if (userData) return this.getUserDataWithTokens(userData);
+    else {
+      const user = await this.prisma.user.create({
+        data: {
+          email: email,
+          name: name,
+          googleId: id,
+        },
+      });
+
+      return this.getUserDataWithTokens(user);
+    }
   }
 
   async register(dto: AuthDto) {
@@ -85,6 +108,8 @@ export class AuthService {
     return {
       id: user.id,
       email: user.email,
+      googleId: user.googleId,
+      name: user.name,
     };
   }
 }

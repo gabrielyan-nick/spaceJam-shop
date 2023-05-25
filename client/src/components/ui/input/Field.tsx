@@ -6,7 +6,7 @@ const Field = forwardRef<HTMLInputElement, IField>(
   ({ label, error, className, style = {}, type = 'text', ...rest }, ref) => {
     return (
       <div className={cn(className)} style={style}>
-        <label className={cn('ml-3 text-fuchsia-200 font-secondary text-lg')}>
+        <label className={cn('ml-3 text-fuchsia-200 font-secondary text-xl')}>
           {label}
           <input
             type={type}

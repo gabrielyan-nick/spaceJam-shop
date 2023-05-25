@@ -10,8 +10,8 @@ const Button = ({ variant, children, className, ...rest }: IButton) => {
     <button
       {...rest}
       className={cn(
-        'rounded-xl px-3 py-1 text-mainText text-lg font-semibold transition-colors',
-        { 'bg-mainPurple hover:bg-purple-700 active:bg-purple-800': variant === 'auth-button' },
+        'flex justify-center rounded-xl px-3 py-1 text-mainText text-lg font-semibold transition-colors',
+        { 'bg-mainPurple hover:bg-purple-700 active:bg-purple-800 h-[36]': variant === 'auth-button' },
         className,
       )}
     >

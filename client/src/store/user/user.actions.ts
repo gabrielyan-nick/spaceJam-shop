@@ -11,11 +11,10 @@ export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(
       const response = await AuthService.main(EnumAuth.Register, data);
       return response;
     } catch (e) {
-      return thunkApi.rejectWithValue(e);
+      return thunkApi.rejectWithValue(errorCatch(e));
     }
   },
 );
-
 
 export const login = createAsyncThunk<IAuthResponse, IEmailPassword>(
   'auth/login',
@@ -24,7 +23,7 @@ export const login = createAsyncThunk<IAuthResponse, IEmailPassword>(
       const response = await AuthService.main(EnumAuth.Login, data);
       return response;
     } catch (e) {
-      return thunkApi.rejectWithValue(e);
+      return thunkApi.rejectWithValue(errorCatch(e));
     }
   },
 );
@@ -38,7 +37,7 @@ export const checkAuth = createAsyncThunk<IAuthResponse>(
     } catch (e) {
       if (errorCatch(e) === 'jwt expired')
         thunkApi.dispatch(userActions.logout());
-      return thunkApi.rejectWithValue(e);
+      return thunkApi.rejectWithValue(errorCatch(e));
     }
   },
 );
