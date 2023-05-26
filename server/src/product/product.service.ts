@@ -58,7 +58,7 @@ export class ProductService {
 
     const { perPage, skip } = this.paginationService.getPagination(dto);
 
-    const produsts = await this.prisma.product.findMany({
+    const products = await this.prisma.product.findMany({
       where: prismaSearchTermFilter,
       orderBy: prismaSort,
       skip,
@@ -66,7 +66,7 @@ export class ProductService {
     });
 
     return {
-      produsts,
+      products,
       length: await this.prisma.product.count({
         where: prismaSearchTermFilter,
       }),

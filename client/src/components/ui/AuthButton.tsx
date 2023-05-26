@@ -2,6 +2,7 @@
 
 import AuthForm from './AuthForm';
 import Button from './Button';
+import UserWidget from './UserWidget';
 import Modal from './modal/Modal';
 import { useAuth } from 'hooks/useAuth';
 import React, { useState } from 'react';
@@ -19,15 +20,15 @@ const AuthButton = () => {
   };
 
   return user ? (
-    <div className="w-10 h-10 rounded-full border-2 border-logoText"></div>
+    <UserWidget />
   ) : (
     <>
-      <Button variant="auth-button" onClick={onOpenModal}>
+      <Button variant="auth-btn" onClick={onOpenModal}>
         Увійти
       </Button>
 
       <Modal isOpen={isModalOpen} onClose={onCloseModal}>
-        <AuthForm />
+        <AuthForm  onClose={onCloseModal}/>
       </Modal>
     </>
   );

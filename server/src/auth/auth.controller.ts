@@ -51,7 +51,10 @@ export class AuthController {
   @Get('google/callback')
   @UseGuards(AuthGuard('google'))
   async googleLoginRedirect(@Req() req, @Res() res) {
-    // res.redirect('http://localhost:3000/favorites');
-    return req.user;
+    const url = `http://localhost:3000/google-redirect?data=${encodeURIComponent(
+      JSON.stringify(req.user),
+    )}`;
+
+    return res.redirect(url);
   }
 }

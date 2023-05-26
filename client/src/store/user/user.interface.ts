@@ -2,6 +2,9 @@ import { IUser } from 'types/user.interface';
 
 export interface IUserState {
   email: string;
+  id: string;
+  googleId: string;
+  name: string;
 }
 
 export interface ITokens {

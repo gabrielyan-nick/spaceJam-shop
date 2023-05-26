@@ -9,6 +9,7 @@ export const theme = {
       mainDark: '#1A1A2E',
       secondaryDark: '#16213E',
       mainPurple: '#7A0BC0',
+      purple3: '#610094',
       darkPurple: '#3F0071',
       logoText: '#E94560',
       mainText: '#DBEDF3',

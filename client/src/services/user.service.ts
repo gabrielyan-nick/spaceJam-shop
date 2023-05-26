@@ -1,10 +1,10 @@
 import { instance } from 'api/api.interceptor';
 import { usersUrl } from 'config/url';
-import { IUser, UserUpdateType } from 'types/user.interface';
+import { IFullUser, IUser, UserUpdateType } from 'types/user.interface';
 
 const UserService = {
   async getProfile() {
-    return instance.get<IUser>(usersUrl());
+    return instance.get<IFullUser>(usersUrl());
   },
 
   async updateProfile(data: UserUpdateType) {

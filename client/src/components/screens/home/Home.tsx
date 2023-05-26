@@ -3,17 +3,12 @@
 import { Catalog, Categories } from 'components';
 import Header from 'components/ui/Header';
 import { useActions } from 'hooks/useActions';
+import useProfile from 'hooks/useProfile';
 import { Metadata, NextPage } from 'next';
 import { useEffect } from 'react';
 import { useAppDispatch } from 'store/hooks';
 
 const Home: NextPage = () => {
-  const { logout, login } = useActions();
-
-  // useEffect(() => {
-  //   logout();
-  // }, []);
-
   return (
     <>
       <Header />

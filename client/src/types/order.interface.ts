@@ -1,9 +1,9 @@
-import { ICardItem } from './card.interface';
+import { ICartItem } from './card.interface';
 import { IUser } from './user.interface';
 
 export interface IOrder {
   id: string;
-  items: ICardItem[];
+  items: ICartItem[];
   status: EnumOrderStatus;
   user: IUser;
   createdAt: string;
