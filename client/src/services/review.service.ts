@@ -16,7 +16,7 @@ const ReviewService = {
   },
 
   async getAverageRatingById(id: string) {
-    return instance.get(reviewsUrl(`${id}/avg`));
+    return instance.get<number>(reviewsUrl(`${id}/avg`));
   },
 };
 

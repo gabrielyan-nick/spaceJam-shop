@@ -16,6 +16,10 @@ export const theme = {
       modalOverlay: '#00000080',
       modalBg: '#16213E',
     },
+    screens: {
+      sx: '500px',
+      mdd: '900px',
+    },
     width: { catalogWidth: 'calc(100% - 250px)' },
     height: { bodyHeight: 'calc(100vh - 64px)' },
     fontFamily: {

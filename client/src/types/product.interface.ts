@@ -14,6 +14,14 @@ export interface IProduct {
   characterictics: object;
 }
 
+export interface IProductsPagination {
+  products: IProduct[];
+  length: number;
+  isLoading?: boolean;
+}
+
+export interface ICatalog extends Omit<IProductsPagination, 'length'> {}
+
 export interface IProductDetails {
   product: IProduct;
 }
@@ -24,7 +32,7 @@ export interface IProductUpdate {
   price: number;
   images: string[];
   categoryId: string;
-  characteristics: object;
+  characteristics?: object;
 }
 
 export interface IProductFilters {

@@ -5,17 +5,21 @@ import Header from 'components/ui/Header';
 import { useActions } from 'hooks/useActions';
 import useProfile from 'hooks/useProfile';
 import { Metadata, NextPage } from 'next';
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
+import ProductsService from 'services/product.service';
 import { useAppDispatch } from 'store/hooks';
+import { IProductsPagination } from 'types/product.interface';
 
-const Home: NextPage = () => {
+const Home: FC<IProductsPagination> = ({ length, products }) => {
   return (
     <>
       <Header />
       <main>
-        <div className="md:flex md:h-bodyHeight">
+        <div className="sm:flex relative content">
           <Categories />
-          <Catalog />
+          <div className="sm:grow  bg-secondaryDark">
+            <Catalog products={products} />
+          </div>
         </div>
       </main>
     </>

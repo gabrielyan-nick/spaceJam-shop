@@ -31,7 +31,7 @@ const UserWidget = () => {
       {isPopupOpen && (
         <div
           ref={popupRef}
-          className="animate-open absolute min-w-[100%] top-[40px] rounded-lg right-0 bg-modalOverlay"
+          className="animate-open absolute min-w-[100%] top-[40px] rounded-lg right-0 bg-gray-900"
         >
           <ul className="p-1 space-y-1">
             <li>

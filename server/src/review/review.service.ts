@@ -68,11 +68,6 @@ export class ReviewService {
         },
         _avg: { rating: true },
       })
-      .then(data => {
-        const avg = +data._avg.rating.toFixed(1);
-        return {
-          rating: avg,
-        };
-      });
+      .then(data => +data._avg.rating.toFixed(1));
   }
 }

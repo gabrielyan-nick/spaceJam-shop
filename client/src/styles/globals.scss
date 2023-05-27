@@ -16,3 +16,7 @@ body {
   text-decoration: none;
   opacity: 0.2 !important;
 }
+
+.content {
+  min-height: calc(100vh - 64px);
+}

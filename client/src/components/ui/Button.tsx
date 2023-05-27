@@ -18,7 +18,7 @@ const Button = ({ variant, children, className, ...rest }: IButton) => {
             variant === 'google-btn',
             'bg-purple3 hover:bg-purple-800 active:bg-purple-950':
             variant === 'user-widget-btn',
-            'bg-transparent  hover:bg-mainPurple active:bg-purple-900 rounded-[5px] w-full flex items-center gap-4 pl-1':
+            'bg-transparent  hover:bg-mainPurple active:bg-purple-900 rounded-[4px] w-full flex items-center gap-4 pl-1':
             variant === 'popup-btn',
         },
         className,

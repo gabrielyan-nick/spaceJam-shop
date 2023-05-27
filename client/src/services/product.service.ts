@@ -4,11 +4,14 @@ import {
   IProduct,
   IProductFilters,
   IProductUpdate,
+  IProductsPagination,
 } from 'types/product.interface';
 
 const ProductsService = {
   async getAll(queryData: IProductFilters = {}) {
-    return instance.get<IProduct[]>(productsUrl(), { params: queryData });
+    return instance.get<IProductsPagination>(productsUrl(), {
+      params: queryData,
+    });
   },
 
   async getSimilar(productId: string) {

@@ -9,7 +9,7 @@ import UserService from 'services/user.service';
 const AddToFavBtn: FC<{ productId: string }> = ({ productId }) => {
   const { profile } = useProfile();
   const { invalidateQueries } = useQueryClient();
-  const isFav = profile.favorites.some(item => item.id === productId);
+  const isFav = profile.favorites?.some(item => item.id === productId);
 
   const { mutate } = useMutation(
     ['toggle favorite'],
