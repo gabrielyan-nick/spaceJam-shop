@@ -7,13 +7,15 @@ export const theme = {
   extend: {
     colors: {
       mainDark: '#1A1A2E',
+      bgDarkBtn: '#1a1a2e9c',
       secondaryDark: '#16213E',
       mainPurple: '#7A0BC0',
       purple3: '#610094',
       darkPurple: '#3F0071',
       logoText: '#E94560',
       mainText: '#DBEDF3',
-      modalOverlay: '#00000080',
+      textSecondary: '#5f9ea0',
+      modalOverlay: '#000000e0',
       modalBg: '#16213E',
     },
     screens: {

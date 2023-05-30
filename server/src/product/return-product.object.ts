@@ -10,12 +10,8 @@ export const productReturnObject: Prisma.ProductSelect = {
   createdAt: true,
   slug: true,
   images: true,
-};
-
-export const productReturnObjectFull: Prisma.ProductSelect = {
-  ...productReturnObject,
+  category: { select: returnCategoryObject },
   reviews: {
     select: returnReviewObject,
   },
-  category: { select: returnCategoryObject },
 };

@@ -17,7 +17,7 @@ const Home: FC<IProductsPagination> = ({ length, products }) => {
       <main>
         <div className="sm:flex relative content">
           <Categories />
-          <div className="sm:grow  bg-secondaryDark">
+          <div className="sm:grow bg-secondaryDark py-6 px-3 2xl:px-6">
             <Catalog products={products} />
           </div>
         </div>

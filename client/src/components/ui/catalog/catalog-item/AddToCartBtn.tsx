@@ -20,7 +20,7 @@ const AddToCartBtn = ({ product }: IProductDetails) => {
   };
 
   return (
-    <div className="absolute top-1 right-2-2">
+    <div className="absolute top-2 right-2 z-20">
       <button onClick={addRemoveCartItem}>
         <svg
           width={25}

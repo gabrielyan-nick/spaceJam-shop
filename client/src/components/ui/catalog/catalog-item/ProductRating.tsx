@@ -5,14 +5,17 @@ import ReviewService from 'services/review.service';
 import { IProductDetails } from 'types/product.interface';
 
 const ProductRating: FC<IProductDetails> = ({ product }) => {
-  const { data: rating } = useQuery(
-    ['get product rating'],
-    () => ReviewService.getAverageRatingById(product.id),
-    {
-      select: ({ data }) => data,
-    },
-  );
   const reviewsLength = product.reviews?.length;
+  const avgRating =
+    product.reviews.reduce((acc, review) => acc + review.rating, 0) /
+    reviewsLength;
+  // const { data: rating } = useQuery(
+  //   ['get product rating'],
+  //   () => ReviewService.getAverageRatingById(product.id),
+  //   {
+  //     select: ({ data }) => data,
+  //   },
+  // );
 
   function getReviewWord(count: number) {
     const lastDigit = count % 10;
@@ -32,10 +35,18 @@ const ProductRating: FC<IProductDetails> = ({ product }) => {
   }
 
   return (
-    <div className="flex">
-      <Rating initialValue={rating}  size={30} />
+    <div className="flex w-full gap-4 items-end">
+      <Rating
+        initialValue={avgRating}
+        size={20}
+        allowFraction
+        transition
+        SVGstyle={{ display: 'inline' }}
+      />
       {!!reviewsLength && (
-        <p>{`(${reviewsLength} ${getReviewWord(reviewsLength)})`}</p>
+        <p className="text-sm">{`(${reviewsLength} ${getReviewWord(
+          reviewsLength,
+        )})`}</p>
       )}
     </div>
   );

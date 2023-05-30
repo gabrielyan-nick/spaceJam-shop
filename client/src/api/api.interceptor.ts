@@ -3,10 +3,13 @@ import axios from 'axios';
 import AuthService from 'services/auth.service';
 import { StorageService } from 'services/storage.service';
 
-export const instance = axios.create({
+const axiosOptions = {
   baseURL: process.env.SERVER_URL,
   headers: getContentType(),
-});
+};
+
+export const axiosClassic = axios.create(axiosOptions);
+export const instance = axios.create(axiosOptions);
 
 instance.interceptors.request.use(config => {
   const accessToken = StorageService.getAccessToken();
@@ -22,7 +25,7 @@ instance.interceptors.response.use(
     const originalRequest = error.config;
 
     if (
-      (error.response.status === 401 ||
+      (error.response?.status === 401 ||
         errorCatch(error) === 'jwt expired' ||
         errorCatch(error) === 'jwt must be provided') &&
       error.config &&
@@ -32,8 +35,13 @@ instance.interceptors.response.use(
       try {
         await AuthService.getNewTokens();
         return instance.request(originalRequest);
-      } catch (e) {
-        if (errorCatch(e) === 'jwt expired') StorageService.removeFromStorage();
+      } catch (e: any) {
+        if (
+          e.response.status === 401 ||
+          errorCatch(e) === 'jwt expired' ||
+          errorCatch(e) === 'jwt must be provided'
+        )
+          StorageService.removeFromStorage();
       }
     }
 

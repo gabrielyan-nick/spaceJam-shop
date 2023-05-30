@@ -1,4 +1,4 @@
-import { instance } from 'api/api.interceptor';
+import { instance, axiosClassic } from 'api/api.interceptor';
 import { productsUrl } from 'config/url';
 import {
   IProduct,
@@ -9,25 +9,25 @@ import {
 
 const ProductsService = {
   async getAll(queryData: IProductFilters = {}) {
-    return instance.get<IProductsPagination>(productsUrl(), {
+    return axiosClassic.get<IProductsPagination>(productsUrl(), {
       params: queryData,
     });
   },
 
   async getSimilar(productId: string) {
-    return instance.get<IProduct[]>(productsUrl(`similar/${productId}`));
+    return axiosClassic.get<IProduct[]>(productsUrl(`similar/${productId}`));
   },
 
   async getById(productId: string) {
-    return instance.get<IProduct>(productsUrl(productId));
+    return axiosClassic.get<IProduct>(productsUrl(productId));
   },
 
   async getBySlug(slug: string) {
-    return instance.get<IProduct>(productsUrl(`by-slug/${slug}`));
+    return axiosClassic.get<IProduct>(productsUrl(`by-slug/${slug}`));
   },
 
   async getByCategory(slug: string) {
-    return instance.get<IProduct[]>(productsUrl(`by-category/${slug}`));
+    return axiosClassic.get<IProduct[]>(productsUrl(`by-category/${slug}`));
   },
 
   async create() {

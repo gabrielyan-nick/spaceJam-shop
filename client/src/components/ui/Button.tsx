@@ -1,5 +1,5 @@
 import cn from 'clsx';
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes, RefObject } from 'react';
 
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'auth-btn' | 'google-btn' | 'user-widget-btn' | 'popup-btn';
@@ -10,15 +10,15 @@ const Button = ({ variant, children, className, ...rest }: IButton) => {
     <button
       {...rest}
       className={cn(
-        'flex justify-center h-[36] rounded-xl px-3 py-1 text-mainText text-lg font-semibold transition-colors',
+        'flex justify-center h-[36]  px-3 py-1 text-mainText text-lg font-semibold transition-colors',
         {
-          'bg-mainPurple hover:bg-purple-700 active:bg-purple-800':
+          'bg-mainPurple hover:bg-purple-700 active:bg-purple-800 rounded-xl':
             variant === 'auth-btn',
-          'bg-slate-300 hover:bg-slate-200 active:bg-slate-400 text-modalBg':
+          'bg-slate-300 hover:bg-slate-200 active:bg-slate-400 text-modalBg rounded-xl':
             variant === 'google-btn',
-            'bg-purple3 hover:bg-purple-800 active:bg-purple-950':
+          'bg-purple3 hover:bg-purple-800 active:bg-purple-950 rounded-xl':
             variant === 'user-widget-btn',
-            'bg-transparent  hover:bg-mainPurple active:bg-purple-900 rounded-[4px] w-full flex items-center gap-4 pl-1':
+          'bg-transparent rounded-[5px]  hover:bg-mainPurple active:bg-purple-900 w-full flex items-center gap-4 pl-1':
             variant === 'popup-btn',
         },
         className,

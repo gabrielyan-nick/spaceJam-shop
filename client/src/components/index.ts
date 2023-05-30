@@ -12,5 +12,8 @@ export { default as UserWidget } from './ui/UserWidget';
 export { default as Catalog } from './ui/catalog/Catalog';
 export { default as CatalogItem } from './ui/catalog/catalog-item/CatalogItem';
 export { default as AddToCartBtn } from './ui/catalog/catalog-item/AddToCartBtn';
-export { default as AddToFavBtn } from './ui/catalog/catalog-item/AddToFavBtn';
+export {
+  AddToFavBtnAuth,
+  AddToFavBtnWithoutAuth,
+} from './ui/catalog/catalog-item/AddToFavBtn';
 export { default as ProductRating } from './ui/catalog/catalog-item/ProductRating';

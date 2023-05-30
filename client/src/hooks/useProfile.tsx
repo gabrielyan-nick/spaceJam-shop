@@ -1,3 +1,4 @@
+import { useAuth } from './useAuth';
 import { useQuery } from '@tanstack/react-query';
 import UserService from 'services/user.service';
 import { IFullUser } from 'types/user.interface';
@@ -8,11 +9,11 @@ interface IProfile {
 }
 
 const useProfile = (): IProfile => {
-  const { data, isLoading } = useQuery(
-    ['get profile'],
-    () => UserService.getProfile(),
-    { select: ({ data }) => data },
-  );
+  const { data, isLoading } = useQuery({
+    queryKey: ['get profile'],
+    queryFn: () => UserService.getProfile(),
+    select: ({ data }) => data,
+  });
 
   return { profile: data || ({} as IFullUser), isLoading };
 };
