@@ -13,10 +13,12 @@ const AuthButton = () => {
 
   const onOpenModal = () => {
     setIsModalOpen(true);
+    document.body.classList.add('overflow-hidden');
   };
 
   const onCloseModal = () => {
     setIsModalOpen(false);
+    document.body.classList.remove('overflow-hidden');
   };
 
   return user ? (
@@ -28,7 +30,7 @@ const AuthButton = () => {
       </Button>
 
       <Modal isOpen={isModalOpen} onClose={onCloseModal}>
-        <AuthForm  onClose={onCloseModal}/>
+        <AuthForm onClose={onCloseModal} />
       </Modal>
     </>
   );

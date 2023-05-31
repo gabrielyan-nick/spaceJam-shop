@@ -7,6 +7,7 @@ export const theme = {
   extend: {
     colors: {
       mainDark: '#1A1A2E',
+      bgDark: '#131322',
       bgDarkBtn: '#1a1a2e9c',
       secondaryDark: '#16213E',
       mainPurple: '#7A0BC0',
@@ -16,11 +17,14 @@ export const theme = {
       mainText: '#DBEDF3',
       textSecondary: '#5f9ea0',
       modalOverlay: '#000000e0',
-      modalBg: '#16213E',
+    },
+    boxShadow: {
+      'card': '0 0 20px 10px #1a1a2eab'
     },
     screens: {
-      sx: '500px',
-      mdd: '900px',
+      sx: '530px',
+      smm: '700px',
+      mdd: '1000px',
     },
     width: { catalogWidth: 'calc(100% - 250px)' },
     height: { bodyHeight: 'calc(100vh - 64px)' },

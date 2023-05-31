@@ -1,4 +1,4 @@
-import { ICartItem } from 'types/card.interface';
+import { ICartItem } from 'types/cart.interface';
 
 export interface ICartInitialState {
   items: ICartItem[];

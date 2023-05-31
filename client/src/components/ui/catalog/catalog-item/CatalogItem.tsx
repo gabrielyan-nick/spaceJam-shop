@@ -8,14 +8,15 @@ import {
 } from 'components';
 import { useAuth } from 'hooks/useAuth';
 import Image from 'next/image';
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
+import ProductsService from 'services/product.service';
 import { IProduct } from 'types/product.interface';
 
 const CatalogItem: FC<{ product: IProduct }> = ({ product }) => {
   const { user } = useAuth();
-  console.log(product);
+
   return (
-    <div className="w-10/12 max-w-[300px] min-w-[220px] rounded-lg bg-mainDark">
+    <div className="w-10/12 max-w-[290px] min-w-[245px] rounded-lg bg-mainDark hover:bg-bgDark transition-colors transition-shadow duration-300 shadow-card hover:shadow-[#222249ab]">
       <div className="relative w-full h-[190px] overflow-hidden rounded-t-lg ">
         {user ? (
           <AddToFavBtnAuth productId={product.id} />

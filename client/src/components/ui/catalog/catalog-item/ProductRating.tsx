@@ -16,7 +16,7 @@ const ProductRating: FC<IProductDetails> = ({ product }) => {
   //     select: ({ data }) => data,
   //   },
   // );
-
+ 
   function getReviewWord(count: number) {
     const lastDigit = count % 10;
     const lastTwoDigits = count % 100;
@@ -35,16 +35,20 @@ const ProductRating: FC<IProductDetails> = ({ product }) => {
   }
 
   return (
-    <div className="flex w-full gap-4 items-end">
+    <div className="flex w-full items-end">
       <Rating
         initialValue={avgRating}
         size={20}
         allowFraction
         transition
+        fillColor="#E94560"
         SVGstyle={{ display: 'inline' }}
       />
       {!!reviewsLength && (
-        <p className="text-sm">{`(${reviewsLength} ${getReviewWord(
+        <span className="text-[#E94560] ml-2 mr-3 translate-y-0.5">{avgRating}</span>
+      )}
+      {!!reviewsLength && (
+        <p className="text-sm text-textSecondary ">{`(${reviewsLength} ${getReviewWord(
           reviewsLength,
         )})`}</p>
       )}

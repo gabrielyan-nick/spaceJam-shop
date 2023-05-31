@@ -12,7 +12,7 @@ const Field = forwardRef<HTMLInputElement, IField>(
             type={type}
             ref={ref}
             {...rest}
-            className="w-full px-2 py-1 font-main rounded-xl bg-modalBg border-[3px] border-mainPurple focus:border-purple-500 transition-colors outline-none text-white"
+            className="w-full px-2 py-1 font-main rounded-xl bg-secondaryDark border-[3px] border-mainPurple focus:border-purple-500 transition-colors outline-none text-white"
           />
         </label>
         <div className="h-6">

@@ -35,7 +35,7 @@ const Modal = ({ isOpen, onClose, children }: IModal) => {
         ref={overlayRef}
         className="fixed inset-0 flex items-center justify-center z-40 bg-modalOverlay animate-overlay"
       >
-        <div className="w-[400px] max-w-[95%]  rounded-lg bg-modalBg animate-modalOpen overflow-hidden relative z-[+1]">
+        <div className="w-[400px] max-w-[95%]  rounded-lg bg-secondaryDark animate-modalOpen overflow-hidden relative z-[+1]">
           <div className="flex justify-end p-1">
             <button
               className="p-0.5 rounded-md bg-darkPurple hover:bg-purple-900 active:bg-purple-950 transition-colors duration-200"
