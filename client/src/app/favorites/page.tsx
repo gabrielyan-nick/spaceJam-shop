@@ -1,5 +1,5 @@
 import { Catalog, Categories } from 'components';
-import Header from 'components/ui/Header';
+import Header from 'components/ui/layout/header/Header';
 import { useActions } from 'hooks/useActions';
 import { Metadata, NextPage } from 'next';
 import { useEffect } from 'react';

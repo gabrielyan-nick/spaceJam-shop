@@ -9,9 +9,14 @@ import {
 
 const ProductsService = {
   async getAll(queryData: IProductFilters = {}) {
-    return axiosClassic.get<IProductsPagination>(productsUrl(), {
-      params: queryData,
-    });
+    const { data } = await axiosClassic.get<IProductsPagination>(
+      productsUrl(),
+      {
+        params: queryData,
+      },
+    );
+
+    return data;
   },
 
   async getSimilar(productId: string) {

@@ -1,4 +1,7 @@
+'use client';
+
 import { useQuery } from '@tanstack/react-query';
+import cn from 'clsx';
 import React, { FC, useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 import ReviewService from 'services/review.service';
@@ -6,17 +9,13 @@ import { IProductDetails } from 'types/product.interface';
 
 const ProductRating: FC<IProductDetails> = ({ product }) => {
   const reviewsLength = product.reviews?.length;
-  const avgRating =
-    product.reviews.reduce((acc, review) => acc + review.rating, 0) /
-    reviewsLength;
-  // const { data: rating } = useQuery(
-  //   ['get product rating'],
-  //   () => ReviewService.getAverageRatingById(product.id),
-  //   {
-  //     select: ({ data }) => data,
-  //   },
-  // );
- 
+  const [rating, setRating] = useState<number>(
+    Math.round(
+      product.reviews.reduce((acc, review) => acc + review.rating, 0) /
+        reviewsLength,
+    ) || 0,
+  );
+
   function getReviewWord(count: number) {
     const lastDigit = count % 10;
     const lastTwoDigits = count % 100;
@@ -35,23 +34,29 @@ const ProductRating: FC<IProductDetails> = ({ product }) => {
   }
 
   return (
-    <div className="flex w-full items-end">
-      <Rating
-        initialValue={avgRating}
-        size={20}
-        allowFraction
-        transition
-        fillColor="#E94560"
-        SVGstyle={{ display: 'inline' }}
-      />
+    <div
+      className={cn('flex w-full items-end', { 'mt-1': reviewsLength === 0 })}
+    >
       {!!reviewsLength && (
-        <span className="text-[#E94560] ml-2 mr-3 translate-y-0.5">{avgRating}</span>
+        <>
+          <Rating
+            readonly
+            initialValue={rating}
+            size={20}
+            allowFraction
+            transition
+            fillColor="#E94560"
+            SVGstyle={{ display: 'inline' }}
+          />
+
+          <span className="text-[#E94560] ml-2 mr-3 translate-y-0.5">
+            {rating}
+          </span>
+        </>
       )}
-      {!!reviewsLength && (
-        <p className="text-sm text-textSecondary ">{`(${reviewsLength} ${getReviewWord(
-          reviewsLength,
-        )})`}</p>
-      )}
+      <p className="text-sm text-textSecondary">{`(${reviewsLength} ${getReviewWord(
+        reviewsLength,
+      )})`}</p>
     </div>
   );
 };

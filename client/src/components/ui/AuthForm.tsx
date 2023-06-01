@@ -1,6 +1,6 @@
 'use client';
 
-import Button from './Button';
+import Button from './button/Button';
 import Heading from './Heading';
 import Loader from './Loader';
 import Field from './input/Field';

@@ -1,6 +1,6 @@
-export { default as Header } from './ui/Header';
-export { default as Categories } from './ui/Categories';
-export { default as Button } from './ui/Button';
+export { default as Header } from './ui/layout/header/Header';
+export { default as Sidebar } from './ui/layout/sidebar/Sidebar';
+export { default as Button } from './ui/button/Button';
 export { default as Heading } from './ui/Heading';
 export { default as Home } from './screens/home/Home';
 export { default as Logo } from './ui/Logo';
@@ -17,3 +17,4 @@ export {
   AddToFavBtnWithoutAuth,
 } from './ui/catalog/catalog-item/AddToFavBtn';
 export { default as ProductRating } from './ui/catalog/catalog-item/ProductRating';
+export { default as SortDropdown } from './ui/catalog/SortDropdown';

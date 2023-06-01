@@ -17,9 +17,10 @@ export const theme = {
       mainText: '#DBEDF3',
       textSecondary: '#5f9ea0',
       modalOverlay: '#000000e0',
+      textHover: '#ba63f3',
     },
     boxShadow: {
-      'card': '0 0 20px 10px #1a1a2eab'
+      card: '0 0 20px 10px #1a1a2eab',
     },
     screens: {
       sx: '530px',

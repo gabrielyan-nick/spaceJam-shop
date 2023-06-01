@@ -1,6 +1,6 @@
 'use client';
 
-import Button from './Button';
+import Button from './button/Button';
 import { useActions } from 'hooks/useActions';
 import { useAuth } from 'hooks/useAuth';
 import useOnClickOutside from 'hooks/useOnClickOutside';

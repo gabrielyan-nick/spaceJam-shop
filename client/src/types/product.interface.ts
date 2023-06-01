@@ -17,10 +17,11 @@ export interface IProduct {
 export interface IProductsPagination {
   products: IProduct[];
   length: number;
-  isLoading?: boolean;
 }
 
-export interface ICatalog extends Omit<IProductsPagination, 'length'> {}
+export interface ICatalog {
+  data: IProductsPagination;
+}
 
 export interface IProductDetails {
   product: IProduct;

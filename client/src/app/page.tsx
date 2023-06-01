@@ -11,14 +11,14 @@ export const metadata: Metadata = {
 export const revalidate = 10;
 
 async function getProducts() {
-  const data = await ProductsService.getAll();
-  return data.data;
+  const data = await ProductsService.getAll({ page: 1, perPage: 4 });
+  return data;
 }
 
 async function HomePage() {
   const data: IProductsPagination = await getProducts();
 
-  return <Home products={data.products} length={data.length} />;
+  return <Home data={data} />;
 }
 
 export default HomePage;
