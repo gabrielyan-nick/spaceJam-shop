@@ -1,49 +1,53 @@
 'use client';
 
 import React, { Dispatch, SetStateAction, useState } from 'react';
-import Select from 'react-select';
+import Select, { SingleValue } from 'react-select';
 import { EnumProductSort } from 'types/product.interface';
 
-const options = [
-  { value: EnumProductSort.HIGH_PRICE, label: 'висока ціна' },
-  { value: EnumProductSort.LOW_PRICE, label: 'низька ціна' },
-  { value: EnumProductSort.NEWEST, label: 'новіші' },
-  { value: EnumProductSort.OLDEST, label: 'найстаріші' },
-];
-
-interface ISortDropdown {
-  sortType: EnumProductSort;
-  setSortType: Dispatch<SetStateAction<EnumProductSort>>;
+export interface ISelectOption {
+  value: EnumProductSort;
+  label: string;
 }
 
-const SortDropdown = ({ setSortType, sortType }: ISortDropdown) => {
-  //   const [selectedOption, setSelectedOption] = useState<EnumProductSort>(
-  //     EnumProductSort.NEWEST,
-  //   );
+export interface ISortDropdown {
+  sortType: ISelectOption;
+  setSortType: Dispatch<SetStateAction<ISelectOption>>;
+}
 
-  //   const handleChange = (e: Event) => {
-  //     setSelectedOption(e.target);
-  //   };
+const options = [
+  { value: EnumProductSort.HIGH_PRICE, label: 'Ціна (висока > низька)' },
+  { value: EnumProductSort.LOW_PRICE, label: 'Ціна (низька > висока)' },
+  { value: EnumProductSort.NEWEST, label: 'Дата додавання (нові > старі)' },
+  { value: EnumProductSort.OLDEST, label: 'Дата додавання (старі > нові)' },
+];
+
+const SortDropdown = ({ setSortType, sortType }: ISortDropdown) => {
+  const handleChange = (value: SingleValue<ISelectOption>) => {
+    setSortType(value as ISelectOption);
+  };
 
   return (
     <div>
       <Select
         options={options}
-        // value={selectedOption}
+        value={sortType}
+        isSearchable={false}
         styles={{
-          control: styles => ({
+          control: (styles, state) => ({
             ...styles,
-            backgroundColor: '#131322',
             border: 'none',
-            color: '#DBEDF3',
+            outline: state.isFocused ? '2px solid #00818A' : 'none',
+            backgroundColor: '#131322',
             borderRadius: '7px',
+            minWidth: '150px',
+            transition: 'all .3s',
           }),
           menuList: styles => ({
             ...styles,
-            backgroundColor: '#131322',
+            backgroundColor: '#1e1e36',
             border: 'none',
             color: '#DBEDF3',
-            borderRadius: '7px',
+            borderRadius: '5px',
           }),
           menu: styles => ({
             ...styles,
@@ -54,9 +58,14 @@ const SortDropdown = ({ setSortType, sortType }: ISortDropdown) => {
             ...styles,
             backgroundColor: state.isFocused ? '#00818A' : 'transparent',
             color: state.isFocused ? '#131322' : '#DBEDF3',
+            transition: 'all .1s',
+          }),
+          singleValue: (styles, state) => ({
+            ...styles,
+            color: '#DBEDF3',
           }),
         }}
-        // onChange={handleChange}
+        onChange={handleChange}
       />
     </div>
   );

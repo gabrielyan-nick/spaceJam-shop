@@ -1,15 +1,19 @@
 'use client';
 
-import Button from './button/Button';
+import Button from '../../button/Button';
 import { useActions } from 'hooks/useActions';
 import { useAuth } from 'hooks/useAuth';
 import useOnClickOutside from 'hooks/useOnClickOutside';
+import { usePathname, useRouter } from 'next/navigation';
+import { protectedRoutes } from 'providers/auth-provider/AuthProvider';
 import React, { useRef, useState } from 'react';
 
 const UserWidget = () => {
   const { user } = useAuth();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const { logout } = useActions();
+  const pathname = usePathname();
+  const router = useRouter();
   const popupRef = useRef(null);
 
   useOnClickOutside(popupRef, () => setIsPopupOpen(false));
@@ -23,6 +27,13 @@ const UserWidget = () => {
     setIsPopupOpen(isPopupOpen => !isPopupOpen);
   };
 
+  const onLogout = () => {
+    if (protectedRoutes.some(route => pathname.startsWith(route))) {
+      router.replace('/');
+    }
+    logout();
+  };
+
   return (
     <div className="relative">
       <Button variant="user-widget-btn" onClick={togglePopup}>
@@ -31,11 +42,11 @@ const UserWidget = () => {
       {isPopupOpen && (
         <div
           ref={popupRef}
-          className="animate-open absolute min-w-[100%] top-[40px] rounded-lg right-0 bg-gray-900"
+          className="animate-open absolute min-w-[100%] top-[40px] rounded-lg right-0 bg-[#0e0118]"
         >
           <ul className="p-1 space-y-1">
             <li>
-              <Button variant="popup-btn" onClick={() => logout()}>
+              <Button variant="popup-btn" onClick={onLogout}>
                 <svg
                   width={20}
                   height={20}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import cn from 'clsx';
 import { AuthForm, Modal } from 'components';
 import useProfile from 'hooks/useProfile';
 import React, { FC, useState } from 'react';
@@ -11,7 +12,7 @@ export const AddToFavBtnAuth: FC<{ productId: string }> = ({ productId }) => {
   const isFav = profile.favorites?.some(item => item.id === productId);
   const queryClient = useQueryClient();
 
-  const { mutate } = useMutation(
+  const { mutate, isLoading } = useMutation(
     ['toggle favorite'],
     () => UserService.toggleFavorite(productId),
     {
@@ -30,6 +31,7 @@ export const AddToFavBtnAuth: FC<{ productId: string }> = ({ productId }) => {
           viewBox="0 0 31 31"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className={cn({ 'animate-pulse duration-75': isLoading })}
         >
           <path
             className="transition-colors"

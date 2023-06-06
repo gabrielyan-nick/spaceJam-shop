@@ -7,7 +7,9 @@ interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
     | 'google-btn'
     | 'user-widget-btn'
     | 'popup-btn'
-    | 'loadMore-btn';
+    | 'loadMore-btn'
+    | 'pagination-btn'
+    | 'pagination-btn-active';
 }
 
 const Button = ({ variant, children, className, ...rest }: IButton) => {
@@ -27,6 +29,10 @@ const Button = ({ variant, children, className, ...rest }: IButton) => {
             variant === 'popup-btn',
           'bg-logoText hover:bg-purple-700 active:bg-purple-800 rounded-xl mt-9 m-auto':
             variant === 'loadMore-btn',
+          'bg-darkPurple hover:bg-purple-800 rounded-xl py-2 px-4 ':
+            variant === 'pagination-btn',
+          'bg-greenBlue hover:bg-[#0D7377] rounded-xl py-2 px-4 ':
+            variant === 'pagination-btn-active',
         },
         className,
       )}

@@ -18,6 +18,7 @@ export const theme = {
       textSecondary: '#5f9ea0',
       modalOverlay: '#000000e0',
       textHover: '#ba63f3',
+      greenBlue: '#00818A',
     },
     boxShadow: {
       card: '0 0 20px 10px #1a1a2eab',
@@ -26,6 +27,7 @@ export const theme = {
       sx: '530px',
       smm: '700px',
       mdd: '1000px',
+      xxl: '1350px',
     },
     width: { catalogWidth: 'calc(100% - 250px)' },
     height: { bodyHeight: 'calc(100vh - 64px)' },

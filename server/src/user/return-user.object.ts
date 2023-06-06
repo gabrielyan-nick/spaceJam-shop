@@ -17,6 +17,12 @@ export const returnUserFavoritesObject = {
       name: true,
       price: true,
       slug: true,
+      category: {
+        select: {
+          slug: true,
+        },
+      },
+      reviews: true,
     },
   },
 };

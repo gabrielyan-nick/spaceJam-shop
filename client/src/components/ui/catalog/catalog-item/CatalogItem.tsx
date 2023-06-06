@@ -17,7 +17,7 @@ const CatalogItem: FC<{ product: IProduct }> = ({ product }) => {
   const { user } = useAuth();
 
   return (
-    <div className="w-10/12 max-w-[290px] min-w-[245px] rounded-lg bg-mainDark hover:bg-bgDark transition-colors transition-shadow duration-300 shadow-card hover:shadow-[#222249ab]">
+    <div className="w-full max-w-[290px] sm:max-w-[260px]  min-w-[240px] rounded-lg bg-mainDark hover:bg-bgDark transition-shadow transition-colors  duration-300 shadow-card hover:shadow-[#222249ab] animate-overlay">
       <div className="relative w-full h-[190px] overflow-hidden rounded-t-lg ">
         {user ? (
           <AddToFavBtnAuth productId={product.id} />

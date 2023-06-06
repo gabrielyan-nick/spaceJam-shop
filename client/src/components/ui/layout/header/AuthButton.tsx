@@ -1,9 +1,9 @@
 'use client';
 
-import AuthForm from './AuthForm';
-import Button from './button/Button';
+import AuthForm from '../../AuthForm';
+import Button from '../../button/Button';
 import UserWidget from './UserWidget';
-import Modal from './modal/Modal';
+import Modal from '../../modal/Modal';
 import { useAuth } from 'hooks/useAuth';
 import React, { useState } from 'react';
 

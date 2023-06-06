@@ -8,7 +8,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ua">
-      <body>
+      <body className='bg-secondaryDark'>
         <Providers>{children}</Providers>
       </body>
     </html>

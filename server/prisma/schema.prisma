@@ -37,8 +37,6 @@ model Product {
   updatedAt       DateTime    @updatedAt @map("updated_at")
   orderItems      OrderItem[]
   reviews         Review[]
-  // user            User?       @relation(fields: [userId], references: [id])
-  // userId          String?     @map("user_id") @db.ObjectId
   users           User[]      @relation(fields: [userIds], references: [id])
   userIds         String[]    @map("user_id") @db.ObjectId
 }
