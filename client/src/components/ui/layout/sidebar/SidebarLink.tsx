@@ -12,7 +12,7 @@ const SidebarLink = ({ name, slug }: ISidebarLink) => {
   return (
     <li>
       <Link
-        className={cn('w-full', {
+        className={cn('w-full py-2 px-4 block rounded-lg text-lg transition-colors', {
           'bg-mainPurple': pathname === `/category/${slug}`,
         })}
         href={`/category/${slug}`}

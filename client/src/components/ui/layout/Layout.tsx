@@ -9,9 +9,9 @@ const Layout = ({ children }: ILayout) => {
   return (
     <>
       <Header />
-      <div className="smm:flex relative content">
+      <div className="smm:flex">
         <Sidebar />
-        <main className="sm:grow bg-secondaryDark py-10 sx:px-3 2xl:px-6">
+        <main className="sm:grow smm:h-bodyHeight overflow-y-scroll bg-secondaryDark py-10 sx:px-3 2xl:px-6">
           {children}
         </main>
       </div>

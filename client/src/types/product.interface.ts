@@ -14,13 +14,13 @@ export interface IProduct {
   characterictics: object;
 }
 
-export interface IProductsPagination {
+export interface IProductsData {
   products: IProduct[];
   length: number;
 }
 
-export interface ICatalog {
-  data: IProductsPagination;
+export interface ICatalogPagination {
+  data: IProductsData;
 }
 
 export interface IProductDetails {

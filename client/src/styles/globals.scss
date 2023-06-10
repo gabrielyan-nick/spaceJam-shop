@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Rubik', sans-serif;
-  color: #DBEDF3;
+  color: #dbedf3;
 }
 
 .disabled {
@@ -18,9 +18,9 @@ body {
 }
 
 .content {
-  min-height: calc(100vh - 64px);
+  height: calc(100vh - 64px);
 }
 
 .icon-btn {
-  @apply absolute  z-20 w-[32px] h-[32px] flex justify-center items-center bg-bgDarkBtn hover:bg-mainDark rounded-md transition-colors duration-700
+  @apply absolute  z-20 flex h-[32px] w-[32px] items-center justify-center rounded-md bg-bgDarkBtn transition-colors duration-700 hover:bg-mainDark;
 }

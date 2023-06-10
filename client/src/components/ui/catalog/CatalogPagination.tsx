@@ -13,7 +13,7 @@ import {
   ICatalogPagination,
 } from 'types/product.interface';
 
-const Catalog = ({ products, length }: ICatalogPagination) => {
+const CatalogPagination = ({ data }: ICatalogPagination) => {
   const [page, setPage] = useState(1);
   const perPage = 4;
   const [sortType, setSortType] = useState<ISelectOption>({
@@ -21,18 +21,18 @@ const Catalog = ({ products, length }: ICatalogPagination) => {
     label: 'Дата додавання (нові > старі)',
   });
 
-  // const { data = products, isLoading } = useQuery(
-  //   ['products', sortType, page],
-  //   () =>
-  //     ProductsService.getAll({
-  //       page,
-  //       perPage,
-  //       sort: sortType.value,
-  //     }),
-  //   { keepPreviousData: true },
-  // );
+  const { data: res, isLoading } = useQuery(
+    ['products', sortType, page],
+    () =>
+      ProductsService.getAll({
+        page,
+        perPage,
+        sort: sortType.value,
+      }),
+    { initialData: data },
+  );
 
-  const pagesCount = length / perPage;
+  const pagesCount = data.length / perPage;
 
   const onGoBack = () => {
     page !== 1 && setPage(page => page - 1);
@@ -42,12 +42,12 @@ const Catalog = ({ products, length }: ICatalogPagination) => {
     page !== pagesCount && setPage(page => page + 1);
   };
 
-  // if (isLoading)
-  //   return (
-  //     <div className="flex justify-center h-1/2 items-center">
-  //       <Loader size="md" />
-  //     </div>
-  //   );
+  if (isLoading)
+    return (
+      <div className="flex justify-center h-1/2 items-center">
+        <Loader size="md" />
+      </div>
+    );
 
   return (
     <section>
@@ -56,8 +56,10 @@ const Catalog = ({ products, length }: ICatalogPagination) => {
       </div>
 
       <div className="flex flex-col items-center sx:items-stretch sx:grid grid-cols-2 lg:grid-cols-3 xxl:grid-cols-4 gap-y-8 gap-x-8 justify-items-center 2xl:justify-items-start">
-        {!!length
-          ? products.map(item => <CatalogItem product={item} key={item.id} />)
+        {!!data.length && !isLoading
+          ? res.products.map(item => (
+              <CatalogItem product={item} key={item.id} />
+            ))
           : 'Пусто'}
       </div>
 
@@ -88,4 +90,4 @@ const Catalog = ({ products, length }: ICatalogPagination) => {
   );
 };
 
-export default Catalog;
+export default CatalogPagination;

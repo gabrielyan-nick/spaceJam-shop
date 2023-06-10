@@ -10,6 +10,7 @@ export { default as AuthForm } from './ui/AuthForm';
 export { default as Loader } from './ui/Loader';
 export { default as UserWidget } from './ui/layout/header/UserWidget';
 export { default as Catalog } from './ui/catalog/Catalog';
+export { default as CatalogPagination } from './ui/catalog/CatalogPagination';
 export { default as CatalogItem } from './ui/catalog/catalog-item/CatalogItem';
 export { default as AddToCartBtn } from './ui/catalog/catalog-item/AddToCartBtn';
 export {

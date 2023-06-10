@@ -39,7 +39,11 @@ const CategoryPage = async ({ params }: ICategoryParams) => {
   const data = getProducts(params);
   console.log(data);
   console.log(params);
-  return <Layout>a</Layout>;
+  return (
+    <Layout>
+      <Catalog data={data} />
+    </Layout>
+  );
 };
 
 export default CategoryPage;

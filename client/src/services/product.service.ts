@@ -4,12 +4,12 @@ import {
   IProduct,
   IProductFilters,
   IProductUpdate,
-  IProductsPagination,
+  IProductsData,
 } from 'types/product.interface';
 
 const ProductsService = {
   async getAll(queryData: IProductFilters = {}) {
-    const { data } = await axiosClassic.get<IProductsPagination>(
+    const { data } = await axiosClassic.get<IProductsData>(
       productsUrl(),
       {
         params: queryData,

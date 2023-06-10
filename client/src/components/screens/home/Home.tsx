@@ -1,11 +1,11 @@
-import { Catalog, Layout, Sidebar } from 'components';
+import { Catalog, CatalogPagination, Layout, Sidebar } from 'components';
 import { FC } from 'react';
-import { ICatalog } from 'types/product.interface';
+import { IProductsData } from 'types/product.interface';
 
-const Home: FC<ICatalog> = ({ data }) => {
+const Home = ({ products, length }: IProductsData) => {
   return (
     <Layout>
-      <Catalog data={data} />
+      <CatalogPagination data={{products, length}} />
     </Layout>
   );
 };

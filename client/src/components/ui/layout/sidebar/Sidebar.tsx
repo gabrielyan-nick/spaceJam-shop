@@ -18,14 +18,14 @@ const Sidebar = () => {
   );
 
   return (
-    <aside className="w-full sm:w-[180px] md:w-[200px] lg:w-[250px] bg-mainDark px-3 py-5">
+    <aside className="w-full smm:h-bodyHeight smm:w-[180px] md:w-[200px] lg:w-[250px] bg-mainDark px-3 py-5">
       {isLoading ? (
         <div className="h-full w-full flex justify-center items-center">
           <Loader size="md" />
         </div>
       ) : (
         <>
-          <p className="text-textSecondary text-lg">Категорії</p>
+          <p className="text-textSecondary text-lg mb-3 ml-4">Категорії</p>
           <nav>
             <ul>
               {data?.map(cat => (
