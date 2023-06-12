@@ -21,8 +21,8 @@ const AddToCartBtn = ({ product }: IProductDetails) => {
     <div className="top-1 right-1 icon-btn">
       <button onClick={addRemoveCartItem}>
         <svg
-          width={23}
-          height={23}
+          width={24}
+          height={24}
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

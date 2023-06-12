@@ -1,5 +1,5 @@
-import { Catalog, Favorites, Layout } from 'components';
-import Header from 'components/ui/layout/header/Header';
+import { FavoritesList } from 'components';
+import Header from 'components/ui/header/Header';
 import { useActions } from 'hooks/useActions';
 import useProfile from 'hooks/useProfile';
 import { Metadata, NextPage } from 'next';
@@ -12,7 +12,11 @@ export const metadata: Metadata = {
 };
 
 const FavPage: NextPage = () => {
-  return <Favorites />;
+  return (
+    <main className="main">
+      <FavoritesList />
+    </main>
+  );
 };
 
 export default FavPage;

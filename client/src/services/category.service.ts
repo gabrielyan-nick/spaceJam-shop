@@ -4,7 +4,8 @@ import { ICategory, UpdateCategory } from 'types/category.interface';
 
 const CategoryService = {
   async getAll() {
-    return instance.get<ICategory[]>(categoriesUrl());
+    const { data } = await instance.get<ICategory[]>(categoriesUrl());
+    return data;
   },
 
   async getById(id: string) {

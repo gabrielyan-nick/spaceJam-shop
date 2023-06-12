@@ -1,7 +1,8 @@
-import { Home } from 'components';
+import { CatalogPagination, Header, Sidebar } from 'components';
 import { Metadata, NextPage } from 'next';
+import CategoryService from 'services/category.service';
 import ProductsService from 'services/product.service';
-import { IProductsData } from 'types/product.interface';
+import { IProductsData, IMainData } from 'types/product.interface';
 
 export const metadata: Metadata = {
   title: 'Головна сторінка | SpaceJam',
@@ -10,16 +11,23 @@ export const metadata: Metadata = {
 
 export const revalidate = 10;
 
-async function getProducts() {
-  const data = await ProductsService.getAll({ page: 1, perPage: 4 });
+const getProducts = async () => {
+  const products = await ProductsService.getAll();
 
-  return data;
-}
+  return products;
+};
 
-async function HomePage() {
+const HomePage = async () => {
   const data: IProductsData = await getProducts();
 
-  return <Home products={data.products} length={data.length} />;
-}
+  return (
+    <main className="main">
+      <CatalogPagination
+        products={data.products}
+        length={data.products.length}
+      />
+    </main>
+  );
+};
 
 export default HomePage;

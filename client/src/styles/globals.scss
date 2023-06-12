@@ -21,6 +21,10 @@ body {
   height: calc(100vh - 64px);
 }
 
+.main {
+  @apply bg-secondaryDark px-5 pb-10 pt-[104px] smm:pl-[200px] md:pl-[220px] lg:pl-[270px];
+}
+
 .icon-btn {
-  @apply absolute  z-20 flex h-[32px] w-[32px] items-center justify-center rounded-md bg-bgDarkBtn transition-colors duration-700 hover:bg-mainDark;
+  @apply absolute z-20 flex h-[32px] w-[32px] items-center justify-center rounded-md bg-bgDarkBtn transition-colors duration-700 hover:bg-mainDark;
 }

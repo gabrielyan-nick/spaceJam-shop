@@ -29,7 +29,7 @@ const Header = () => {
   };
   return (
     <>
-      <header className="sticky top-0 h-[64px] z-30 flex items-center justify-between px-4 bg-mainDark backdrop-blur-sm">
+      <header className="fixed top-0 w-full h-[64px] z-30 flex items-center justify-between px-4 bg-mainDark backdrop-blur-sm">
         <div className="flex">
           <Link href="/">
             <Logo />

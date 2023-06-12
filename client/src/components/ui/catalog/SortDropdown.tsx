@@ -44,7 +44,7 @@ const SortDropdown = ({ setSortType, sortType }: ISortDropdown) => {
           }),
           menuList: styles => ({
             ...styles,
-            backgroundColor: '#1e1e36',
+            backgroundColor: '#11111f',
             border: 'none',
             color: '#DBEDF3',
             borderRadius: '5px',

@@ -37,6 +37,14 @@ export class ProductService {
               },
             },
             {
+              category: {
+                slug: {
+                  contains: searchTerm,
+                  mode: 'insensitive',
+                },
+              },
+            },
+            {
               name: {
                 contains: searchTerm,
                 mode: 'insensitive',

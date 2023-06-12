@@ -19,8 +19,11 @@ export interface IProductsData {
   length: number;
 }
 
-export interface ICatalogPagination {
-  data: IProductsData;
+export type ICategoryCatalog = Omit<IProductsData, 'products'>;
+
+export interface IMainData {
+  products: IProductsData;
+  categories: ICategory[];
 }
 
 export interface IProductDetails {

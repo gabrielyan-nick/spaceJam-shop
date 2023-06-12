@@ -1,10 +1,7 @@
-'use client';
-
-import { Catalog, Home, Layout } from 'components';
+import { CatalogByCategory, Heading } from 'components';
 import { Metadata, NextPage } from 'next';
 import CategoryService from 'services/category.service';
 import ProductsService from 'services/product.service';
-import { IProductsPagination } from 'types/product.interface';
 
 type TParamsSlug = {
   slug: string;
@@ -19,8 +16,10 @@ export const metadata: Metadata = {
   description: '',
 };
 
+export const revalidate = 10;
+
 async function generateStaticParams() {
-  const { data: categories } = await CategoryService.getAll();
+  const categories = await CategoryService.getAll();
   const paths = categories.map(cat => ({
     slug: cat.slug,
   }));
@@ -28,21 +27,21 @@ async function generateStaticParams() {
   return paths;
 }
 
-async function getProducts(params: TParamsSlug) {
+const getCategory = async (params: TParamsSlug) => {
   const { data: products } = await ProductsService.getByCategory(params.slug);
   const { data: category } = await CategoryService.getBySlug(params.slug);
 
   return { products, category };
-}
+};
 
 const CategoryPage = async ({ params }: ICategoryParams) => {
-  const data = getProducts(params);
-  console.log(data);
-  console.log(params);
+  const data = await getCategory(params);
+
   return (
-    <Layout>
-      <Catalog data={data} />
-    </Layout>
+    <main className="main">
+      <Heading className="ml-5">{data.category.name}</Heading>
+      <CatalogByCategory length={data.products.length} />
+    </main>
   );
 };
 
