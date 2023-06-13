@@ -17,8 +17,8 @@ export interface ISortDropdown {
 const options = [
   { value: EnumProductSort.HIGH_PRICE, label: 'Ціна (висока > низька)' },
   { value: EnumProductSort.LOW_PRICE, label: 'Ціна (низька > висока)' },
-  { value: EnumProductSort.NEWEST, label: 'Дата додавання (нові > старі)' },
-  { value: EnumProductSort.OLDEST, label: 'Дата додавання (старі > нові)' },
+  { value: EnumProductSort.NEWEST, label: 'Дата (нові > старі)' },
+  { value: EnumProductSort.OLDEST, label: 'Дата (старі > нові)' },
 ];
 
 const SortDropdown = ({ setSortType, sortType }: ISortDropdown) => {
@@ -48,6 +48,7 @@ const SortDropdown = ({ setSortType, sortType }: ISortDropdown) => {
             border: 'none',
             color: '#DBEDF3',
             borderRadius: '5px',
+            boxShadow: '0 4px 6px -1px #00000056, 0 2px 4px -2px #00000056',
           }),
           menu: styles => ({
             ...styles,
@@ -66,6 +67,7 @@ const SortDropdown = ({ setSortType, sortType }: ISortDropdown) => {
           }),
         }}
         onChange={handleChange}
+        className="shadow-[#00000056] shadow-md"
       />
     </div>
   );

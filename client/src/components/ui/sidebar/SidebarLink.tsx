@@ -1,3 +1,6 @@
+'use client';
+
+import { LogoSvg } from '../svg';
 import cn from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -12,12 +15,19 @@ const SidebarLink = ({ name, slug }: ISidebarLink) => {
   return (
     <li>
       <Link
-        className={cn('w-full py-2 px-4 block rounded-lg text-lg transition-colors', {
-          'bg-mainPurple': pathname === `/category/${slug}`,
+        className={cn('sidebar-link', {
+          'bg-purple3': pathname === `/category/${slug}`,
         })}
         href={`/category/${slug}`}
       >
         {name}
+        <LogoSvg
+          width={50}
+          className={cn('transition-all duration-300', {
+            'translate-x-0': pathname === `/category/${slug}`,
+            'translate-x-[70px]': pathname !== `/category/${slug}`,
+          })}
+        />
       </Link>
     </li>
   );

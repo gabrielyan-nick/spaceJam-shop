@@ -22,7 +22,7 @@ const CatalogPagination = ({ products, length }: IProductsData) => {
   const perPage = mediaMatches ? 9 : 8;
   const [sortType, setSortType] = useState<ISelectOption>({
     value: EnumProductSort.NEWEST,
-    label: 'Дата додавання (нові > старі)',
+    label: 'Дата (нові > старі)',
   });
 
   const { data: res, isLoading } = useQuery(

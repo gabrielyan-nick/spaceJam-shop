@@ -11,9 +11,12 @@ interface ICategoryParams {
   params: TParamsSlug;
 }
 
-export const metadata: Metadata = {
-  title: 'Головна сторінка | SpaceJam',
-  description: '',
+export const generateMetadata = async ({
+  params,
+}: ICategoryParams): Promise<Metadata> => {
+  const { data } = await CategoryService.getBySlug(params.slug);
+
+  return { title: `${data.name} | SpaceJam`, description: '' };
 };
 
 export const revalidate = 10;
@@ -39,7 +42,7 @@ const CategoryPage = async ({ params }: ICategoryParams) => {
 
   return (
     <main className="main">
-      <Heading className="ml-5">{data.category.name}</Heading>
+      <Heading className="ml-5 font-medium">{data.category.name}</Heading>
       <CatalogByCategory length={data.products.length} />
     </main>
   );

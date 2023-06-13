@@ -10,13 +10,10 @@ import React, { useRef, useState } from 'react';
 
 const UserWidget = () => {
   const { user } = useAuth();
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const { logout } = useActions();
   const pathname = usePathname();
   const router = useRouter();
-  const popupRef = useRef(null);
-
-  useOnClickOutside(popupRef, () => setIsPopupOpen(false));
+  const { isShow, ref, setIsShow } = useOnClickOutside(false);
 
   const name =
     user?.name.length! > 7
@@ -24,7 +21,7 @@ const UserWidget = () => {
       : user?.name.trim();
 
   const togglePopup = () => {
-    setIsPopupOpen(isPopupOpen => !isPopupOpen);
+    setIsShow(isShow => !isShow);
   };
 
   const onLogout = () => {
@@ -39,10 +36,10 @@ const UserWidget = () => {
       <Button variant="user-widget-btn" onClick={togglePopup}>
         {name}
       </Button>
-      {isPopupOpen && (
+      {isShow && (
         <div
-          ref={popupRef}
-          className="animate-open absolute min-w-[100%] top-[40px] rounded-lg right-0 bg-[#0e0118]"
+          ref={ref}
+          className="animate-open absolute min-w-[100%] top-[40px] rounded-lg right-0 bg-bgPurple shadow-[#00000056] shadow-md"
         >
           <ul className="p-1 space-y-1">
             <li>

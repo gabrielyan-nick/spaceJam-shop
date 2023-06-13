@@ -30,11 +30,11 @@ const Header = () => {
   return (
     <>
       <header className="fixed top-0 w-full h-[64px] z-30 flex items-center justify-between px-4 bg-mainDark backdrop-blur-sm">
-        <div className="flex">
+        <div className="flex mr-8">
           <Link href="/">
             <Logo />
           </Link>
-          <div className="ml-16 flex items-center">
+          <div className="ml-10 mdd:ml-16 flex items-center">
             <SearchBar />
           </div>
         </div>
@@ -52,7 +52,7 @@ const Header = () => {
             >
               <path
                 d="M29.5 4.5C27.8 2.3 25.3 1 22.7 1c-2.6 0-5.1 1.3-6.7 3.5C14.4 2.3 11.9 1 9.3 1 6.7 1 4.2 2.3 2.5 4.5c-1.9 2.6-2 6.4-.3 9.3 0 0 0 .1.1.1l12.9 16.6c.2.3.5.4.8.4s.6-.1.8-.4L29.7 14s0-.1.1-.1c1.7-2.9 1.6-6.8-.3-9.4z"
-                fill={'#b6a7ab'}
+                className="fill-[#c71b5d] hover:fill-[#e9377b] active:fill-[#a0194d] transition-colors"
               />
             </svg>
           </Link>

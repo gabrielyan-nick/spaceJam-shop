@@ -36,7 +36,7 @@ export const AddToFavBtnAuth: FC<{ productId: string }> = ({ productId }) => {
           <path
             className="transition-colors"
             d="M29.5 4.5C27.8 2.3 25.3 1 22.7 1c-2.6 0-5.1 1.3-6.7 3.5C14.4 2.3 11.9 1 9.3 1 6.7 1 4.2 2.3 2.5 4.5c-1.9 2.6-2 6.4-.3 9.3 0 0 0 .1.1.1l12.9 16.6c.2.3.5.4.8.4s.6-.1.8-.4L29.7 14s0-.1.1-.1c1.7-2.9 1.6-6.8-.3-9.4z"
-            fill={isFav ? '#FB2576' : '#b6a7ab'}
+            fill={isFav ? '#dd1f68' : '#b6a7ab'}
           />
         </svg>
       </button>
