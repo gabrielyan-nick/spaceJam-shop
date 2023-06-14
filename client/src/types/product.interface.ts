@@ -14,16 +14,15 @@ export interface IProduct {
   characterictics: object;
 }
 
+export interface ICatalog {
+  products?: IProduct[];
+  length: number;
+  slug?: string;
+}
+
 export interface IProductsData {
   products: IProduct[];
   length: number;
-}
-
-export type ICategoryCatalog = Omit<IProductsData, 'products'>;
-
-export interface IMainData {
-  products: IProductsData;
-  categories: ICategory[];
 }
 
 export interface IProductDetails {

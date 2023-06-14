@@ -13,8 +13,7 @@ body {
     background-color: #a88cc285;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #570d85;
-    border-radius: 5px;
+    background-color: #4c0c74;
   }
 }
 
@@ -38,7 +37,7 @@ body {
 }
 
 .sidebar-link {
-  @apply flex w-full items-center justify-between  overflow-hidden rounded-lg px-4 text-lg transition-colors duration-300 hover:text-textHover;
+  @apply flex h-[50px] w-full items-center justify-between  overflow-hidden rounded-lg pl-4 pr-2 text-lg transition-colors duration-300 hover:text-textHover md:pr-4;
 }
 
 .cart-wrapper {
@@ -48,7 +47,19 @@ body {
     border-radius: 10px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #570d85;
+    background-color: #4c0c74;
     border-radius: 10px;
+  }
+}
+
+.carousel-wrapper {
+  &::-webkit-scrollbar {
+    height: 7px;
+    background-color: #a88cc285;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #4c0c74;
+    border-radius: 5px;
   }
 }

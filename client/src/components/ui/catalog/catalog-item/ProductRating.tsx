@@ -5,7 +5,7 @@ import cn from 'clsx';
 import React, { FC, useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 import ReviewService from 'services/review.service';
-import { IProductDetails } from 'types/product.interface';
+import { IProduct, IProductDetails } from 'types/product.interface';
 
 const ProductRating: FC<IProductDetails> = ({ product }) => {
   const reviewsLength = product.reviews?.length;
@@ -16,7 +16,7 @@ const ProductRating: FC<IProductDetails> = ({ product }) => {
     ) || 0,
   );
 
-  function getReviewWord(count: number) {
+  const getReviewWord = (count: number) => {
     const lastDigit = count % 10;
     const lastTwoDigits = count % 100;
 
@@ -31,7 +31,7 @@ const ProductRating: FC<IProductDetails> = ({ product }) => {
     } else {
       return 'відгуків';
     }
-  }
+  };
 
   return (
     <div

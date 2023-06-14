@@ -9,8 +9,7 @@ export { default as AuthForm } from './ui/AuthForm';
 export { default as Loader } from './ui/Loader';
 export { default as Search } from './ui/Search';
 export { default as UserWidget } from './ui/header/UserWidget';
-export { default as CatalogByCategory } from './ui/catalog/CatalogByCategory';
-export { default as CatalogPagination } from './ui/catalog/CatalogPagination';
+export { default as Catalog } from './ui/catalog/Catalog';
 export { default as CatalogItem } from './ui/catalog/catalog-item/CatalogItem';
 export { default as AddToCartBtn } from './ui/catalog/catalog-item/AddToCartBtn';
 export {

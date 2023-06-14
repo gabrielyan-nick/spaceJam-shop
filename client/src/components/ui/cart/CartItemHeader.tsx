@@ -12,12 +12,11 @@ interface ICartItemHeader {
 }
 
 const CartItemHeader = ({ item }: ICartItemHeader) => {
-  const { addToCart, removeFromCart } = useActions();
-
+  const { removeFromCart } = useActions();
   const remove = () => removeFromCart({ id: item.id });
 
   return (
-    <div className="flex items-center w-full min-w-[240px]">
+    <div className="flex items-center w-full min-w-[290px]">
       <Link className="shrink-0" href={`/product/${item.product.slug}`}>
         <Image
           src={item.product.images[0]}

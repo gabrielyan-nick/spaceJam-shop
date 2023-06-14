@@ -8,7 +8,9 @@ interface IHeading {
 
 const Heading = ({ children, className = '' }: IHeading) => {
   return (
-    <h1 className={cn(`text-cyan-100 text-2xl ${className}`)}>{children}</h1>
+    <h1 className={cn(`text-cyan-100 text-3xl font-medium ${className}`)}>
+      {children}
+    </h1>
   );
 };
 

@@ -9,30 +9,37 @@ import {
 
 const ProductsService = {
   async getAll(queryData: IProductFilters = {}) {
-    const { data } = await axiosClassic.get<IProductsData>(
-      productsUrl(),
-      {
-        params: queryData,
-      },
-    );
+    const { data } = await axiosClassic.get<IProductsData>(productsUrl(), {
+      params: queryData,
+    });
 
     return data;
   },
 
   async getSimilar(productId: string) {
-    return axiosClassic.get<IProduct[]>(productsUrl(`similar/${productId}`));
+    const { data } = await axiosClassic.get<IProduct[]>(
+      productsUrl(`similar/${productId}`),
+    );
+    return data;
   },
 
   async getById(productId: string) {
-    return axiosClassic.get<IProduct>(productsUrl(productId));
+    const { data } = await axiosClassic.get<IProduct>(productsUrl(productId));
+    return data;
   },
 
   async getBySlug(slug: string) {
-    return axiosClassic.get<IProduct>(productsUrl(`by-slug/${slug}`));
+    const { data } = await axiosClassic.get<IProduct>(
+      productsUrl(`by-slug/${slug}`),
+    );
+    return data;
   },
 
   async getByCategory(slug: string) {
-    return axiosClassic.get<IProduct[]>(productsUrl(`by-category/${slug}`));
+    const { data } = await axiosClassic.get<IProduct[]>(
+      productsUrl(`by-category/${slug}`),
+    );
+    return data;
   },
 
   async create() {

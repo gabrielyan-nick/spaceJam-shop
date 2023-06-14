@@ -25,6 +25,7 @@ const PaginationBtns = ({
 
       {Array.from({ length: pagesCount }).map((_, index) => {
         const pageNumber = index + 1;
+        
         return (
           <Button
             key={index}

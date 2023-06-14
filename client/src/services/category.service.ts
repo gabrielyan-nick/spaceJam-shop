@@ -13,7 +13,10 @@ const CategoryService = {
   },
 
   async getBySlug(slug: string) {
-    return instance.get<ICategory>(categoriesUrl(`by-slug/${slug}`));
+    const { data } = await instance.get<ICategory>(
+      categoriesUrl(`by-slug/${slug}`),
+    );
+    return data;
   },
 
   async create() {

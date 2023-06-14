@@ -33,7 +33,7 @@ interface ILogoSvg {
 export const LogoSvg = ({ width = 80, className }: ILogoSvg) => {
   return (
     <svg
-      width={width}
+      width={`${width}px`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 502.74 502.74"
       xmlSpace="preserve"

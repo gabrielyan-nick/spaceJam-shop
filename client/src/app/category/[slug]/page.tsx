@@ -1,25 +1,18 @@
-import { CatalogByCategory, Heading } from 'components';
+import { Catalog, Heading } from 'components';
 import { Metadata, NextPage } from 'next';
 import CategoryService from 'services/category.service';
 import ProductsService from 'services/product.service';
+import { IParams, TParamsSlug } from 'types/next.interface';
 
-type TParamsSlug = {
-  slug: string;
-};
-
-interface ICategoryParams {
-  params: TParamsSlug;
-}
+export const revalidate = 60;
 
 export const generateMetadata = async ({
   params,
-}: ICategoryParams): Promise<Metadata> => {
-  const { data } = await CategoryService.getBySlug(params.slug);
+}: IParams): Promise<Metadata> => {
+  const data = await CategoryService.getBySlug(params.slug);
 
   return { title: `${data.name} | SpaceJam`, description: '' };
 };
-
-export const revalidate = 10;
 
 async function generateStaticParams() {
   const categories = await CategoryService.getAll();
@@ -30,20 +23,20 @@ async function generateStaticParams() {
   return paths;
 }
 
-const getCategory = async (params: TParamsSlug) => {
-  const { data: products } = await ProductsService.getByCategory(params.slug);
-  const { data: category } = await CategoryService.getBySlug(params.slug);
+const getData = async (params: TParamsSlug) => {
+  const products = await ProductsService.getByCategory(params.slug);
+  const category = await CategoryService.getBySlug(params.slug);
 
   return { products, category };
 };
 
-const CategoryPage = async ({ params }: ICategoryParams) => {
-  const data = await getCategory(params);
+const CategoryPage = async ({ params }: IParams) => {
+  const data = await getData(params);
 
   return (
     <main className="main">
-      <Heading className="ml-5 font-medium">{data.category.name}</Heading>
-      <CatalogByCategory length={data.products.length} />
+      <Heading className="ml-5">{data.category.name}</Heading>
+      <Catalog length={data.products.length} slug={data.category.slug} />
     </main>
   );
 };

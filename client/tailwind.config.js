@@ -19,7 +19,7 @@ export const theme = {
       modalOverlay: '#000000e0',
       textHover: '#ba63f3',
       greenBlue: '#00818A',
-      bgPurple: '#301642',
+      bgPurple: '#1e0d2b',
     },
     boxShadow: {
       card: '0 0 20px 10px #1a1a2eab',

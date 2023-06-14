@@ -39,7 +39,9 @@ const HeaderCart = () => {
       {isShow && (
         <div
           ref={ref}
-          className="pt-1 pb-2 pl-2 pr-1 animate-open absolute min-w-[220px] w-max max-w-[315px] min-h-[100px] top-[40px] rounded-lg -right-3 bg-bgPurple shadow-[#0000004f] shadow-md"
+          className={cn(
+            'pt-1 pb-2 pl-2 pr-1 animate-open absolute min-w-[220px] w-max max-w-[315px] min-h-[100px] top-[40px] rounded-lg -right-4 sxx:-right-[110px] smm:-right-3 bg-bgPurple shadow-[#0000004f] shadow-md',
+          )}
         >
           <p className="text-center text-lg font-medium mb-3">Кошик</p>
 
