@@ -20,6 +20,7 @@ export const PrevNextArrow = ({
       <path
         d="M659.2 917.333l66.133-66.133-339.2-339.2 339.2-339.2-66.133-66.133L256 512z"
         fill={isActive ? '#00818A' : '#00818a36'}
+        className="transition-colors"
       />
     </svg>
   );

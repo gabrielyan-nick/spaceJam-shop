@@ -7,7 +7,19 @@ import useProfile from 'hooks/useProfile';
 import React, { FC, useState } from 'react';
 import UserService from 'services/user.service';
 
-export const AddToFavBtnAuth: FC<{ productId: string }> = ({ productId }) => {
+interface IAddToFavBtn {
+  productId: string;
+  size?: number;
+  className?: string;
+}
+
+type IAddToFavBtnWithoutAuth = Omit<IAddToFavBtn, 'productId'>;
+
+export const AddToFavBtnAuth = ({
+  productId,
+  className,
+  size = 20,
+}: IAddToFavBtn) => {
   const { profile } = useProfile();
   const isFav = profile.favorites?.some(item => item.id === productId);
   const queryClient = useQueryClient();
@@ -23,11 +35,11 @@ export const AddToFavBtnAuth: FC<{ productId: string }> = ({ productId }) => {
   );
 
   return (
-    <div className="top-1 left-1 icon-btn">
+    <div className={cn('', className)}>
       <button onClick={() => mutate()}>
         <svg
-          width="20px"
-          height="20px"
+          width={`${size}px`}
+          height={`${size}px`}
           viewBox="0 0 31 31"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +56,10 @@ export const AddToFavBtnAuth: FC<{ productId: string }> = ({ productId }) => {
   );
 };
 
-export const AddToFavBtnWithoutAuth = () => {
+export const AddToFavBtnWithoutAuth = ({
+  className,
+  size = 20,
+}: IAddToFavBtnWithoutAuth) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onOpenModal = () => {
@@ -57,11 +72,11 @@ export const AddToFavBtnWithoutAuth = () => {
 
   return (
     <>
-      <div className="top-1 left-1 icon-btn">
+      <div className={cn('', className)}>
         <button onClick={onOpenModal}>
           <svg
-            width={20}
-            height={20}
+            width={`${size}px`}
+            height={`${size}px`}
             viewBox="0 0 31 31"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

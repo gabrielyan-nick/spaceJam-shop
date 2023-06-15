@@ -33,7 +33,7 @@ body {
 }
 
 .icon-btn {
-  @apply absolute z-20 flex h-[32px] w-[32px] items-center justify-center rounded-md bg-bgDarkBtn transition-colors duration-700 hover:bg-mainDark;
+  @apply z-20 flex h-[32px] w-[32px] items-center justify-center rounded-md bg-bgDarkBtn transition-colors duration-700 hover:bg-mainDark;
 }
 
 .sidebar-link {

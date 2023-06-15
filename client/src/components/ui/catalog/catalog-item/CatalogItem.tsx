@@ -20,12 +20,18 @@ const CatalogItem: FC<{ product: IProduct }> = ({ product }) => {
     <div className="w-full max-w-[290px] sm:max-w-[260px]  min-w-[230px] rounded-lg bg-mainDark hover:bg-bgDark transition-shadow transition-colors  duration-300 shadow-card hover:shadow-[#222249ab] animate-open">
       <div className="relative w-full h-[190px] overflow-hidden rounded-t-lg ">
         {user ? (
-          <AddToFavBtnAuth productId={product.id} />
+          <AddToFavBtnAuth
+            className="top-1 left-1 absolute icon-btn"
+            productId={product.id}
+          />
         ) : (
-          <AddToFavBtnWithoutAuth />
+          <AddToFavBtnWithoutAuth className="top-1 left-1 absolute icon-btn" />
         )}
 
-        <AddToCartBtn product={product} />
+        <AddToCartBtn
+          className="top-1 right-1 absolute icon-btn"
+          product={product}
+        />
         <Link href={`/product/${product.slug}`}>
           <Image
             src={product.images[0]}

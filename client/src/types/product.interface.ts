@@ -11,7 +11,7 @@ export interface IProduct {
   images: string[];
   reviews: IReview[];
   category: ICategory;
-  characterictics: object;
+  characteristics: object;
 }
 
 export interface ICatalog {
@@ -27,6 +27,7 @@ export interface IProductsData {
 
 export interface IProductDetails {
   product: IProduct;
+  className?: string;
 }
 
 export interface IProductUpdate {

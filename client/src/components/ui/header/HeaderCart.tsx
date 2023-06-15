@@ -3,7 +3,7 @@
 import cn from 'clsx';
 import { CartItemHeader } from 'components';
 import useCart from 'hooks/useCart';
-import useOnClickOutside from 'hooks/useOnClickOutside';
+import {useOnClickOutside} from 'hooks/useOnClickOutside';
 import React from 'react';
 
 const HeaderCart = () => {

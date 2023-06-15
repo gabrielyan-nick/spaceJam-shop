@@ -1,11 +1,12 @@
 'use client';
 
+import cn from 'clsx';
 import { useActions } from 'hooks/useActions';
 import useCart from 'hooks/useCart';
 import React from 'react';
 import { IProductDetails } from 'types/product.interface';
 
-const AddToCartBtn = ({ product }: IProductDetails) => {
+const AddToCartBtn = ({ product, className }: IProductDetails) => {
   const { addToCart, removeFromCart } = useActions();
   const { items } = useCart();
   const currentItem = items.find(cartItem => cartItem.product.id == product.id);
@@ -18,7 +19,7 @@ const AddToCartBtn = ({ product }: IProductDetails) => {
   };
 
   return (
-    <div className="top-1 right-1 icon-btn">
+    <div className={cn('', className)}>
       <button onClick={addRemoveCartItem}>
         <svg
           width={24}

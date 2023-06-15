@@ -9,15 +9,17 @@ const ProductReviewsCount = ({ product }: IProductDetails) => {
   if (!reviewsLength) return null;
 
   return (
-    <Link
-      className="cursor-pointer"
-      to="reviews"
-      smooth
-      offset={-50}
-      duration={500}
-    >
-      <ProductRating product={product} />
-    </Link>
+    <div>
+      <Link
+        className="cursor-pointer inline-block"
+        to="reviews"
+        smooth
+        offset={-50}
+        duration={500}
+      >
+        <ProductRating product={product} />
+      </Link>
+    </div>
   );
 };
 

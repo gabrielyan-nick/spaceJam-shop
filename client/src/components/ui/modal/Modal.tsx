@@ -5,14 +5,14 @@ import cn from 'clsx';
 import React, { ReactNode, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-interface IModal {
+export interface IModal {
   isOpen: boolean;
   children: ReactNode;
   onClose: () => void;
 }
 
 const Modal = ({ isOpen, onClose, children }: IModal) => {
-  const overlayRef = useRef(null);
+  // const overlayRef = useRef(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -32,7 +32,7 @@ const Modal = ({ isOpen, onClose, children }: IModal) => {
   return createPortal(
     isOpen && (
       <div
-        ref={overlayRef}
+        // ref={overlayRef}
         className="fixed inset-0 flex items-center justify-center z-40 bg-modalOverlay animate-overlay"
       >
         <div className="w-[400px] max-w-[95%]  rounded-lg bg-secondaryDark animate-modalOpen overflow-hidden relative z-[+1]">

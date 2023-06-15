@@ -3,7 +3,7 @@
 import Button from '../button/Button';
 import { useActions } from 'hooks/useActions';
 import { useAuth } from 'hooks/useAuth';
-import useOnClickOutside from 'hooks/useOnClickOutside';
+import {useOnClickOutside} from 'hooks/useOnClickOutside';
 import { usePathname, useRouter } from 'next/navigation';
 import { protectedRoutes } from 'providers/auth-provider/AuthProvider';
 import React, { useRef, useState } from 'react';
