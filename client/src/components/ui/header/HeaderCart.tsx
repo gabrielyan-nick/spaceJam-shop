@@ -3,7 +3,7 @@
 import cn from 'clsx';
 import { CartItemHeader } from 'components';
 import useCart from 'hooks/useCart';
-import {useOnClickOutside} from 'hooks/useOnClickOutside';
+import { useOnClickOutside } from 'hooks/useOnClickOutside';
 import React from 'react';
 
 const HeaderCart = () => {
@@ -40,7 +40,7 @@ const HeaderCart = () => {
         <div
           ref={ref}
           className={cn(
-            'pt-1 pb-2 pl-2 pr-1 animate-open absolute min-w-[220px] w-max max-w-[315px] min-h-[100px] top-[40px] rounded-lg -right-4 sxx:-right-[110px] smm:-right-3 bg-bgPurple shadow-[#0000004f] shadow-md',
+            'pt-1 pb-2 pl-2 pr-1 animate-open absolute min-w-[220px] w-max max-w-[300px] sx:max-w-[315px] min-h-[100px] top-[40px] rounded-lg -right-[130px] sxx:-right-[110px] smm:-right-3 bg-popupBg shadow-[#0000004f] shadow-md',
           )}
         >
           <p className="text-center text-lg font-medium mb-3">Кошик</p>

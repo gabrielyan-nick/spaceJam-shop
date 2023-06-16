@@ -1,9 +1,10 @@
 'use client';
 
+import ProductDescription from './ProductDescription';
 import ProductGallery from './ProductGallery';
 import ProductInfo from './ProductInfo';
-import ProductPrice from './productPrice/ProductPrice';
 import ProductReviewsCount from './ProductReviewsCount';
+import ProductPrice from './productPriceBlock/ProductPrice';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Heading } from 'components';
 import Link from 'next/link';
@@ -43,12 +44,9 @@ const Product = ({
       <div className="flex mt-10 items-start">
         <ProductGallery images={data.images} productName={data.name} />
         <ProductInfo className="ml-10" info={data.characteristics} />
-        <ProductPrice
-          className="ml-10"
-          price={data.price}
-          productId={data.id}
-        />
+        <ProductPrice className="ml-10" product={data} />
       </div>
+      <ProductDescription description={data.description} />
     </div>
   );
 };

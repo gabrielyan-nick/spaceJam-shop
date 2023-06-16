@@ -1,13 +1,13 @@
 interface IArrowSvg {
   size?: number;
-  dir?: string;
-  isActive: boolean;
+  dir?: 'prev' | 'next' | 'up' | 'down';
+  isActive?: boolean;
 }
 
 export const PrevNextArrow = ({
   size = 30,
   dir = 'prev',
-  isActive,
+  isActive = true,
 }: IArrowSvg) => {
   return (
     <svg
@@ -15,7 +15,17 @@ export const PrevNextArrow = ({
       height={size}
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ transform: dir === 'next' ? 'rotate(180deg)' : 'rotate(0deg)' }}
+      style={{
+        transform:
+          dir === 'next'
+            ? 'rotate(180deg)'
+            : dir === 'prev'
+            ? 'rotate(0deg)'
+            : dir === 'up'
+            ? 'rotate(90deg)'
+            : 'rotate(270deg)',
+        transition: '.2s all',
+      }}
     >
       <path
         d="M659.2 917.333l66.133-66.133-339.2-339.2 339.2-339.2-66.133-66.133L256 512z"
@@ -84,12 +94,12 @@ export const LogoSvg = ({ width = 80, className }: ILogoSvg) => {
   );
 };
 
-interface IDelIcon {
+interface IIcon {
   size?: number;
   className?: string;
 }
 
-export const DeleteIcon = ({ size = 18, className }: IDelIcon) => {
+export const DeleteIcon = ({ size = 18, className }: IIcon) => {
   return (
     <svg
       width={`${size}px`}
@@ -101,6 +111,23 @@ export const DeleteIcon = ({ size = 18, className }: IDelIcon) => {
       <path
         className="fill-[#b6a7ab] hover:fill-[#d8c7cc] active:fill-[#aa8a92] transition-colors"
         d="M53.21 467c1.562 24.84 23.02 45 47.9 45h245.8c24.88 0 46.33-20.16 47.9-45L416 128H32l21.21 339zM432 32H320L308.42 8.84a15.998 15.998 0 00-14.31-8.844H153.9c-6.061 0-11.6 3.424-14.31 8.844L128 32H16C7.164 32 0 39.162 0 48v32c0 8.836 7.164 16 16 16h416c8.838 0 16-7.164 16-16V48c0-8.84-7.2-16-16-16z"
+      />
+    </svg>
+  );
+};
+
+export const AttentionIcon = ({ size = 20, className }: IIcon) => {
+  return (
+    <svg
+      width={`${size}px`}
+      height={`${size}px`}
+      viewBox="0 0 1024 1024"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        className="fill-logoText"
+        d="M512 64a448 448 0 110 896 448 448 0 010-896zm0 192a58.432 58.432 0 00-58.24 63.744l23.36 256.384a35.072 35.072 0 0069.76 0l23.296-256.384A58.432 58.432 0 00512 256zm0 512a51.2 51.2 0 100-102.4 51.2 51.2 0 000 102.4z"
       />
     </svg>
   );

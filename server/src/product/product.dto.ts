@@ -1,6 +1,7 @@
 import { Prisma } from '@prisma/client';
 import {
   ArrayMinSize,
+  IsArray,
   IsNumber,
   IsObject,
   IsOptional,
@@ -15,7 +16,7 @@ export class ProductDto implements Prisma.ProductUpdateInput {
   price: number;
 
   @IsOptional()
-  @IsString()
+  @IsArray()
   description?: string;
 
   @IsString({ each: true })
