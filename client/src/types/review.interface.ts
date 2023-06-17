@@ -8,4 +8,4 @@ export interface IReview {
   user: IUser;
 }
 
-export type ReviewCreateType = Pick<IReview, 'text' | 'rating'>;
+export interface IReviewCreateFields extends Pick<IReview, 'text' | 'rating'> {}

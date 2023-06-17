@@ -12,29 +12,26 @@ export interface IModal {
 }
 
 const Modal = ({ isOpen, onClose, children }: IModal) => {
-  // const overlayRef = useRef(null);
-
   useEffect(() => {
     if (isOpen) {
+      document.body.classList.add('overflow-hidden');
       document.addEventListener('keydown', handleKeyDown);
       return () => {
         document.removeEventListener('keydown', handleKeyDown);
       };
-    }
+    } else document.body.classList.remove('overflow-hidden');
   }, [isOpen]);
 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
       onClose();
+      document.body.classList.remove('overflow-hidden');
     }
   };
 
   return createPortal(
     isOpen && (
-      <div
-        // ref={overlayRef}
-        className="fixed inset-0 flex items-center justify-center z-40 bg-modalOverlay animate-overlay"
-      >
+      <div className="fixed inset-0 flex items-center justify-center z-40 bg-modalOverlay animate-overlay">
         <div className="w-[400px] max-w-[95%]  rounded-lg bg-secondaryDark animate-modalOpen overflow-hidden relative z-[+1]">
           <div className="flex justify-end p-1">
             <button

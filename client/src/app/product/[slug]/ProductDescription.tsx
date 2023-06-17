@@ -15,7 +15,7 @@ const ProductDescription = ({ description }: IProductDescription) => {
   const onToggleShow = () => setIsFullShow(isFullShow => !isFullShow);
 
   return (
-    <div className="max-w-[850px] mt-5">
+    <div>
       <h3 className="text-xl font-medium mb-2">Опис</h3>
       <div
         className={cn('space-y-2 overflow-hidden transition-all', {
@@ -29,7 +29,7 @@ const ProductDescription = ({ description }: IProductDescription) => {
       </div>
       <div
         className={cn(
-          'relative pt-1 z-10 flex justify-center bg-secondaryDark transition-shadow',
+          'relative pt-1 z-10 flex justify-center transition-shadow',
           {
             'shadow-showMore': !isFullShow,
           },
@@ -37,7 +37,7 @@ const ProductDescription = ({ description }: IProductDescription) => {
       >
         <button
           onClick={onToggleShow}
-          className="text-textSecondary flex items-center gap-1"
+          className="text-textSecondary gap-1 w-full flex items-center justify-center "
         >
           <span>{!isFullShow ? 'Читати повністю' : 'Сховати'}</span>
           {!isFullShow ? (

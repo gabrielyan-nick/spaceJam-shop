@@ -1,14 +1,18 @@
 import { instance } from 'api/api.interceptor';
 import { reviewsUrl } from 'config/url';
-import { IReview, ReviewCreateType } from 'types/review.interface';
+import { IReview, IReviewCreateFields } from 'types/review.interface';
 
 const ReviewService = {
   async getAll() {
     return instance.get<IReview[]>(reviewsUrl());
   },
 
-  async create(id: string, data: ReviewCreateType) {
-    return instance.post<IReview>(reviewsUrl(`post/${id}`), data);
+  async create(productId: string, postData: IReviewCreateFields) {
+    const data = instance.post<IReview>(
+      reviewsUrl(`post/${productId}`),
+      postData,
+    );
+    return data;
   },
 
   async delete(id: string) {

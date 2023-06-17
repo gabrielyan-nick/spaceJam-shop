@@ -30,11 +30,11 @@ export class ReviewController {
   @Post('post/:productId')
   @Auth()
   async createReview(
-    @CurrentUser('id') id: string,
+    @CurrentUser('id') userId: string,
     @Param('productId') productId: string,
     @Body() dto: ReviewDto,
   ) {
-    return this.reviewService.createReview(id, productId, dto);
+    return this.reviewService.createReview(userId, productId, dto);
   }
 
   @HttpCode(200)
