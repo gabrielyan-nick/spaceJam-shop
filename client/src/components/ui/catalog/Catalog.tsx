@@ -9,12 +9,7 @@ import useMediaQuery from 'hooks/useMediaQuery';
 import { usePathname } from 'next/navigation';
 import { FC, useState } from 'react';
 import ProductsService from 'services/product.service';
-import {
-  EnumProductSort,
-  ICatalog,
-  IProduct,
-  IProductsData,
-} from 'types/product.interface';
+import { EnumProductSort, ICatalog } from 'types/product.interface';
 
 const Catalog = ({ length, slug = '' }: ICatalog) => {
   const [page, setPage] = useState(1);

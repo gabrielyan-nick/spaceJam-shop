@@ -44,6 +44,7 @@ const PhotoModal = ({
 
   useEffect(() => {
     if (isOpen) {
+      document.body.classList.add('overflow-hidden');
       document.addEventListener('keydown', handleKeyDown);
       return () => {
         document.removeEventListener('keydown', handleKeyDown);

@@ -1,4 +1,5 @@
 import { FavoritesList } from 'components';
+import Footer from 'components/ui/Footer';
 import Header from 'components/ui/header/Header';
 import { useActions } from 'hooks/useActions';
 import useProfile from 'hooks/useProfile';
@@ -13,9 +14,12 @@ export const metadata: Metadata = {
 
 const FavPage: NextPage = () => {
   return (
-    <main className="main">
-      <FavoritesList />
-    </main>
+    <>
+      <main className="main">
+        <FavoritesList />
+      </main>
+      <Footer />
+    </>
   );
 };
 

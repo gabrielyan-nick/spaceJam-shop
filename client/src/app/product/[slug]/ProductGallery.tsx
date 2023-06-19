@@ -34,7 +34,10 @@ const ProductGallery = ({ images, productName }: IProductGallery) => {
   };
 
   const onOpenPhoto = () => setIsPhotoOpen(true);
-  const onClosePhoto = () => setIsPhotoOpen(false);
+  const onClosePhoto = () => {
+    setIsPhotoOpen(false);
+    document.body.classList.remove('overflow-hidden');
+  };
 
   return (
     <>

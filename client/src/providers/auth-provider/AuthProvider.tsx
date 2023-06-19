@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { FC, PropsWithChildren, ReactNode, useEffect } from 'react';
 import { StorageService } from 'services/storage.service';
 
-export const protectedRoutes = ['/my-order', '/favorites'];
+export const protectedRoutes = ['/my-orders', '/favorites'];
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const { user } = useAuth();

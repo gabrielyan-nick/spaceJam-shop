@@ -1,7 +1,7 @@
 'use client';
 
 import Button from '../button/Button';
-import { AuthForm, Modal } from 'components';
+import { AuthForm, Heading, Modal } from 'components';
 import { useActions } from 'hooks/useActions';
 import { useAuth } from 'hooks/useAuth';
 import useMediaQuery from 'hooks/useMediaQuery';
@@ -34,16 +34,22 @@ const UserWidget = () => {
       router.replace('/');
     }
     logout();
+    document.body.classList.remove('overflow-hidden');
   };
 
   const onOpenModal = () => {
     setIsModalOpen(true);
-    document.body.classList.add('overflow-hidden');
+    togglePopup();
   };
 
   const onCloseModal = () => {
     setIsModalOpen(false);
     document.body.classList.remove('overflow-hidden');
+  };
+
+  const onGoToOrders = () => {
+    togglePopup();
+    router.push('/my-orders');
   };
 
   return (
@@ -82,7 +88,24 @@ const UserWidget = () => {
                 </Button>
               )}
               <li>
-                <Button variant="popup-btn" onClick={onLogout}>
+                <Button variant="popup-btn" onClick={onGoToOrders}>
+                  <svg
+                    width={20}
+                    height={20}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4 .75H1a1 1 0 00-1 1v.5a1 1 0 001 1h2.012l2.724 11.481A4.25 4.25 0 009.765 18V18h7.822a4 4 0 003.943-3.325l1.256-7.338A2 2 0 0020.814 5H5.997l-.78-3.289A1.25 1.25 0 004 .75zM10 21a2 2 0 11-4 0 2 2 0 014 0zM21 21a2 2 0 11-4 0 2 2 0 014 0z"
+                      fill="#5f9ea0"
+                    />
+                  </svg>
+                  Замовлення
+                </Button>
+              </li>
+              <li>
+                <Button variant="popup-btn" onClick={onOpenModal}>
                   <svg
                     width={20}
                     height={20}
@@ -106,8 +129,30 @@ const UserWidget = () => {
         )}
       </div>
 
-      <Modal isOpen={isModalOpen} onClose={onCloseModal}>
-        <AuthForm onClose={onCloseModal} />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={onCloseModal}
+        width={user ? 'sm' : 'md'}
+      >
+        {!user ? (
+          <AuthForm onClose={onCloseModal} />
+        ) : (
+          <>
+            <Heading className="text-center">Вийти з акаунта?</Heading>
+            <div className="flex justify-between px-4 mt-5">
+              <Button className="px-6" variant="auth-btn" onClick={onLogout}>
+                Так
+              </Button>
+              <Button
+                onClick={onCloseModal}
+                className="px-7"
+                variant="auth-btn"
+              >
+                Ні
+              </Button>
+            </div>
+          </>
+        )}
       </Modal>
     </>
   );

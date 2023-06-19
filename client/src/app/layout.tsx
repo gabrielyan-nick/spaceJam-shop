@@ -18,7 +18,7 @@ export default async function RootLayout({
 
   return (
     <html lang="ua">
-      <body className="bg-secondaryDark">
+      <body className="bg-secondaryDark flex flex-col min-h-screen">
         <Providers>
           <Header />
           <Sidebar categories={data} />

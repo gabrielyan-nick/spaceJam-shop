@@ -1,4 +1,5 @@
 import { Catalog } from 'components';
+import Footer from 'components/ui/Footer';
 import { Metadata, NextPage } from 'next';
 import CategoryService from 'services/category.service';
 import ProductsService from 'services/product.service';
@@ -21,9 +22,12 @@ const HomePage = async () => {
   const data: IProductsData = await getProducts();
 
   return (
-    <main className="main">
-      <Catalog length={data.products.length} />
-    </main>
+    <>
+      <main className="main">
+        <Catalog length={data.products.length} />
+      </main>
+      <Footer />
+    </>
   );
 };
 

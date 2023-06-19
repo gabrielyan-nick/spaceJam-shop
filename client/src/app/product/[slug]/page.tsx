@@ -1,3 +1,4 @@
+import Footer from 'components/ui/Footer';
 import Product from './Product';
 import { Metadata } from 'next';
 import React from 'react';
@@ -42,15 +43,18 @@ const ProductPage = async (params: IParams) => {
   const { product, similarProducts } = await getProduct(params);
 
   return (
-    <main className="main">
-      <section className='pl-5'>
-        <Product
-          initialProduct={product}
-          similarProducts={similarProducts}
-          slug={params.params.slug}
-        />
-      </section>
-    </main>
+    <>
+      <main className="main">
+        <section className="pl-5">
+          <Product
+            initialProduct={product}
+            similarProducts={similarProducts}
+            slug={params.params.slug}
+          />
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 };
 

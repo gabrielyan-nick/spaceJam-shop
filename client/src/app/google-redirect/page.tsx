@@ -12,12 +12,11 @@ export const metadata: Metadata = {
 
 const GoogleRedirectPage: NextPage = () => {
   const params = useSearchParams();
-  const router = useRouter();
 
   useEffect(() => {
     const data: string = params.get('data') as string;
     StorageService.saveToStorage(JSON.parse(data));
-    router.replace('/');
+    history.go(-2);
   }, []);
 
   return <></>;

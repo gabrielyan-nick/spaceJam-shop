@@ -29,7 +29,10 @@ const LeaveReviewForm = ({ productId, closeModal }: ILeaveReviewForm) => {
     {
       onSuccess: () => {
         queryClient.refetchQueries(['get product', productId]);
-        setTimeout(() => closeModal(), 1500);
+        setTimeout(() => {
+          closeModal();
+          document.body.classList.remove('overflow-hidden');
+        }, 1000);
       },
     },
   );
@@ -52,7 +55,6 @@ const LeaveReviewForm = ({ productId, closeModal }: ILeaveReviewForm) => {
               initialValue={value}
               onClick={onChange}
               size={30}
-              allowFraction
               transition
               fillColor="#E94560"
               SVGstyle={{ display: 'inline-block' }}
@@ -78,7 +80,7 @@ const LeaveReviewForm = ({ productId, closeModal }: ILeaveReviewForm) => {
               {errors.text.message}
             </p>
           )}
-          {isSuccess && !errors && (
+          {isSuccess && !errors.rating && !errors.text && (
             <p className="text-center text-xl font-semibold text-green-600 animate-overlay">
               Успішно
             </p>

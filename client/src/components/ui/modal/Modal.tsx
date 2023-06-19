@@ -9,9 +9,10 @@ export interface IModal {
   isOpen: boolean;
   children: ReactNode;
   onClose: () => void;
+  width?: 'sm' | 'md';
 }
 
-const Modal = ({ isOpen, onClose, children }: IModal) => {
+const Modal = ({ isOpen, onClose, children, width = 'md' }: IModal) => {
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add('overflow-hidden');
@@ -19,7 +20,7 @@ const Modal = ({ isOpen, onClose, children }: IModal) => {
       return () => {
         document.removeEventListener('keydown', handleKeyDown);
       };
-    } else document.body.classList.remove('overflow-hidden');
+    }
   }, [isOpen]);
 
   const handleKeyDown = (event: KeyboardEvent) => {
@@ -32,7 +33,12 @@ const Modal = ({ isOpen, onClose, children }: IModal) => {
   return createPortal(
     isOpen && (
       <div className="fixed inset-0 flex items-center justify-center z-40 bg-modalOverlay animate-overlay">
-        <div className="w-[400px] max-w-[95%]  rounded-lg bg-secondaryDark animate-modalOpen overflow-hidden relative z-[+1]">
+        <div
+          className={cn(
+            ' max-w-[95%]  rounded-lg bg-secondaryDark animate-modalOpen overflow-hidden relative z-[+1]',
+            { 'w-[400px]': width === 'md', 'w-[300px]': width === 'sm' },
+          )}
+        >
           <div className="flex justify-end p-1">
             <button
               className="p-0.5 rounded-md bg-darkPurple hover:bg-purple-900 active:bg-purple-950 transition-colors duration-200"

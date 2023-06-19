@@ -7,6 +7,17 @@ export interface IOrder {
   status: EnumOrderStatus;
   user: IUser;
   createdAt: string;
+  totalPrice: number;
+}
+
+export interface IOrderData {
+  status?: EnumOrderStatus;
+  items: { productId: string; quantity: number; price: number }[];
+}
+
+export interface IUpdateOrderStatus {
+  status: EnumOrderStatus;
+  orderId: string;
 }
 
 export enum EnumOrderStatus {

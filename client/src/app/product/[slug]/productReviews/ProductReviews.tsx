@@ -22,6 +22,7 @@ const ProductReviews = ({ productId, reviews }: IProductReviews) => {
 
   const onCloseModal = () => {
     setIsModalOpen(false);
+    document.body.classList.remove('overflow-hidden');
   };
 
   return (
@@ -37,18 +38,22 @@ const ProductReviews = ({ productId, reviews }: IProductReviews) => {
           <Button
             onClick={onOpenModal}
             className="ml-10 text-base"
-            variant="auth-btn"
+            variant="user-widget-btn"
           >
             Залишити відгук
           </Button>
         </div>
         {!reviews.length && (
-          <p className="text-textSecondary mt-4">Немає відгуків</p>
+          <p className="text-textSecondary mt-8">Немає відгуків</p>
         )}
         {!!reviews.length && (
           <div className="mt-10 space-y-9">
             {reviews.map(review => (
-              <ReviewItem key={review.id} review={review} />
+              <ReviewItem
+                key={review.id}
+                productId={productId}
+                review={review}
+              />
             ))}
           </div>
         )}

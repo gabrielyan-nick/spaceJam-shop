@@ -9,7 +9,8 @@ interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
     | 'popup-btn'
     | 'loadMore-btn'
     | 'pagination-btn'
-    | 'pagination-btn-active';
+    | 'pagination-btn-active'
+    | 'buy-btn';
 }
 
 const Button = ({ variant, children, className, ...rest }: IButton) => {
@@ -33,6 +34,8 @@ const Button = ({ variant, children, className, ...rest }: IButton) => {
             variant === 'pagination-btn',
           'bg-greenBlue hover:bg-[#0D7377] rounded-xl py-2 px-4 ':
             variant === 'pagination-btn-active',
+          'bg-[#10676d] hover:bg-[#1f7c83] active:bg-[#136a70] text-white rounded-xl flex justify-center gap-2 items-center':
+            variant === 'buy-btn',
         },
         className,
       )}
