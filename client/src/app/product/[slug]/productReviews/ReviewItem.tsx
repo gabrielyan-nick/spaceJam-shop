@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button, Heading, Loader, Modal } from 'components';
 import { DeleteIcon } from 'components/ui/svg';
 import { useAuth } from 'hooks/useAuth';
+import useMediaQuery from 'hooks/useMediaQuery';
 import React, { useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 import ReviewService from 'services/review.service';
@@ -18,7 +19,7 @@ interface IReviewItem {
 const ReviewItem = ({ review, productId }: IReviewItem) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useAuth();
-
+  const mediaMatches = useMediaQuery('(min-width: 400px)');
   const queryClient = useQueryClient();
 
   const { mutate, isLoading } = useMutation(
@@ -49,16 +50,18 @@ const ReviewItem = ({ review, productId }: IReviewItem) => {
         <div className="flex justify-between mb-2 text-textSecondary">
           <div className="flex items-center">
             <span className="font-medium mr-4">{review.user.name}</span>
-            <Rating
-              readonly
-              initialValue={review.rating}
-              size={20}
-              allowFraction
-              transition
-              fillColor="#E94560"
-              SVGstyle={{ display: 'inline' }}
-              className="-translate-y-0.5"
-            />
+            {mediaMatches && (
+              <Rating
+                readonly
+                initialValue={review.rating}
+                size={20}
+                allowFraction
+                transition
+                fillColor="#E94560"
+                SVGstyle={{ display: 'inline' }}
+                className="-translate-y-0.5"
+              />
+            )}
             {review.user.id === user?.id && (
               <button onClick={onOpenModal} className="ml-3">
                 <DeleteIcon size={15} />
@@ -67,6 +70,18 @@ const ReviewItem = ({ review, productId }: IReviewItem) => {
           </div>
           <span>{formatDate(review.createdAt)}</span>
         </div>
+        {!mediaMatches && (
+          <Rating
+            readonly
+            initialValue={review.rating}
+            size={20}
+            allowFraction
+            transition
+            fillColor="#E94560"
+            SVGstyle={{ display: 'inline' }}
+            className="-translate-y-0.5"
+          />
+        )}
         <p>{review.text}</p>
       </div>
 

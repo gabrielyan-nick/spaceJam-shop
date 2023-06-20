@@ -7,7 +7,7 @@ import { useActions } from 'hooks/useActions';
 import { useAuth } from 'hooks/useAuth';
 import useCart from 'hooks/useCart';
 import { useOnClickOutside } from 'hooks/useOnClickOutside';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import OrderService from 'services/order.service';
 
@@ -15,10 +15,9 @@ const HeaderCart = () => {
   const { isShow, ref, setIsShow } = useOnClickOutside(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { items, total } = useCart();
-  const { resetCart } = useActions();
   const router = useRouter();
   const { user } = useAuth();
-  const queryClient = useQueryClient();
+  const pathname = usePathname();
 
   const toggleCart = () => {
     setIsShow(isShow => !isShow);
@@ -35,17 +34,14 @@ const HeaderCart = () => {
         })),
       }),
     {
-      onSuccess: () => {
-        router.push('/my-orders');
-        queryClient.refetchQueries(['my orders']);
-        setTimeout(() => resetCart(), 500);
+      onSuccess: ({ data }) => {
+        router.push(`/checkout/${data.id}`);
       },
     },
   );
 
   const onOpenModal = () => {
     setIsModalOpen(true);
-    document.body.classList.add('overflow-hidden');
   };
 
   const onCloseModal = () => {
@@ -87,7 +83,7 @@ const HeaderCart = () => {
           <div
             ref={ref}
             className={cn(
-              'pt-1 pb-2 pl-2 pr-1 animate-open absolute min-w-[220px] w-max max-w-[300px] sx:max-w-[315px] min-h-[100px] top-[40px] rounded-lg -right-[130px] sxx:-right-[110px] smm:-right-3 bg-popupBg shadow-[#0000004f] shadow-md',
+              'pt-1 pb-2 pl-2 pr-1 animate-open absolute min-w-[220px] w-max max-w-[300px] sx:max-w-[315px] min-h-[100px] top-[40px] rounded-lg -right-[115px] sxx:-right-[110px] smm:-right-3 bg-popupBg shadow-[#0000004f] shadow-md',
             )}
           >
             <p className="text-center text-lg font-medium mb-3">Кошик</p>
@@ -107,14 +103,16 @@ const HeaderCart = () => {
                   {`Загальна сума: `}
                   <span className="text-mainText mr-2">{total}</span>грн.
                 </p>
-
-                <Button
-                  onClick={onPlaceOrder}
-                  variant="auth-btn"
-                  className="mt-4 mb-1 m-auto"
-                >
-                  Оформити замовлення
-                </Button>
+                
+                {!pathname.startsWith('/checkout') && (
+                  <Button
+                    onClick={onPlaceOrder}
+                    variant="auth-btn"
+                    className="mt-4 mb-1 m-auto"
+                  >
+                    Оформити замовлення
+                  </Button>
+                )}
               </div>
             ) : (
               <p className="text-center mt-5 text-textSecondary">

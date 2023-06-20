@@ -41,8 +41,8 @@ const ProductGallery = ({ images, productName }: IProductGallery) => {
 
   return (
     <>
-      <div className="max-w-[445px]">
-        <div className="w-full h-[350px] overflow-hidden rounded-md">
+      <div className="max-w-[300px] sxx:max-w-[345px] xl:max-w-[445px]">
+        <div className="w-full h-[205px] sxx:h-[250px] xl:h-[350px] overflow-hidden rounded-md">
           <Image
             src={images[activeIndex]}
             alt={productName}
@@ -59,12 +59,12 @@ const ProductGallery = ({ images, productName }: IProductGallery) => {
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           ref={trackRef}
-          className="mt-3 pb-1 w-full flex gap-[5px] overflow-x-auto whitespace-nowrap carousel-wrapper"
+          className="mt-2 xl:mt-3 pb-1 w-full flex gap-[5px] overflow-x-auto whitespace-nowrap carousel-wrapper"
         >
           {images.map((image, index) => (
             <button
               className={cn(
-                'w-[145px] h-[110px] transition-all duration-200 hover:shadow-lg shrink-0 rounded-md border-solid border-2 border-ro',
+                'w-[100px] xl:w-[145px] h-[75px] xl:h-[110px] transition-all duration-200 hover:shadow-lg shrink-0 rounded-md border-solid border-2',
                 {
                   'border-[#4c0c74] shadow-lg': index === activeIndex,
                   'border-transparent': index !== activeIndex,

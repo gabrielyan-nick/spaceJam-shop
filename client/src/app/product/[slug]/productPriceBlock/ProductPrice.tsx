@@ -1,7 +1,7 @@
 'use client';
 
 import AddToCart from './AddToCard';
-import './styles.scss';
+import styles from './ProductPrice.module.scss';
 import cn from 'clsx';
 import { AddToFavBtnAuth, AddToFavBtnWithoutAuth } from 'components';
 import { AttentionIcon } from 'components/ui/svg';
@@ -15,7 +15,7 @@ const ProductPrice = ({ className, product }: IProductDetails) => {
   return (
     <div
       className={cn(
-        'bg-mainDark rounded-md py-2 px-3 shrink-0 w-[270px]',
+        'bg-mainDark rounded-md py-2 px-3 shrink-0 max-w-[300px] sxx:max-w-[345px] 885:w-[270px]',
         className,
       )}
     >
@@ -35,7 +35,7 @@ const ProductPrice = ({ className, product }: IProductDetails) => {
         <p className="text-textSecondary text-sm ml-1">Доставка</p>
         <div className="bg-secondaryDark rounded-2xl p-0.5 max-w-[260px]">
           <input
-            className="sr-only"
+            className={styles.radio}
             type="radio"
             name="delivery"
             value="self"
@@ -51,7 +51,7 @@ const ProductPrice = ({ className, product }: IProductDetails) => {
           </label>
 
           <input
-            className="sr-only"
+            className={styles.radio}
             type="radio"
             name="delivery"
             value="post"
@@ -78,5 +78,3 @@ const ProductPrice = ({ className, product }: IProductDetails) => {
 };
 
 export default ProductPrice;
-
-

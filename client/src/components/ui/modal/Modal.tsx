@@ -64,7 +64,7 @@ const Modal = ({ isOpen, onClose, children, width = 'md' }: IModal) => {
             <span className="star"></span>
             <span className="star"></span>
           </div>
-          <div className="pt-3 pb-5 py-2"> {children}</div>
+          <div className="pt-3 pb-5"> {children}</div>
         </div>
       </div>
     ),

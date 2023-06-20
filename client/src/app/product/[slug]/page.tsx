@@ -1,5 +1,5 @@
-import Footer from 'components/ui/Footer';
 import Product from './Product';
+import Footer from 'components/ui/Footer';
 import { Metadata } from 'next';
 import React from 'react';
 import ProductsService from 'services/product.service';
@@ -18,9 +18,8 @@ async function generateStaticParams() {
 
 const getProduct = async ({ params }: IParams) => {
   const product = await ProductsService.getBySlug(params.slug);
-  const similarProducts = await ProductsService.getSimilar(product.id);
 
-  return { product, similarProducts };
+  return product;
 };
 
 export const generateMetadata = async ({
@@ -40,17 +39,13 @@ export const generateMetadata = async ({
 };
 
 const ProductPage = async (params: IParams) => {
-  const { product, similarProducts } = await getProduct(params);
+  const product = await getProduct(params);
 
   return (
     <>
       <main className="main">
-        <section className="pl-5">
-          <Product
-            initialProduct={product}
-            similarProducts={similarProducts}
-            slug={params.params.slug}
-          />
+        <section className="lg:pl-5">
+          <Product initialProduct={product} slug={params.params.slug} />
         </section>
       </main>
       <Footer />

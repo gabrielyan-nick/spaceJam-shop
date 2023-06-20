@@ -16,3 +16,10 @@ export const productInfoObj: { [key: string]: string } = {
   apparentMagnitude: 'Видима зор. вел.',
   starType: 'Тип зірки',
 };
+
+export const statusObj: { [key: string]: string } = {
+  PENDING: 'Чекає на підтвердження',
+  PAYED: 'Чекає на оплату',
+  SHIPPED: 'Оформлено. Чекає на доставку',
+  DELIVERED: 'Доставлено',
+};

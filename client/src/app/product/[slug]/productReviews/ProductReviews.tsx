@@ -31,13 +31,13 @@ const ProductReviews = ({ productId, reviews }: IProductReviews) => {
         <div className="flex mb-2 items-center">
           <h3 className="text-xl font-medium">Відгуки</h3>
           {!!reviews.length && (
-            <span className="text-textSecondary ml-3 text-lg">
+            <span className="text-textSecondary ml-1.5 sxx:ml-3 text-lg">
               {reviews.length}
             </span>
           )}
           <Button
             onClick={onOpenModal}
-            className="ml-10 text-base"
+            className="ml-auto sxx:ml-10 text-base"
             variant="user-widget-btn"
           >
             Залишити відгук

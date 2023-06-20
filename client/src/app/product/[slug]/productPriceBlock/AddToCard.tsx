@@ -12,14 +12,13 @@ import OrderService from 'services/order.service';
 import { IProductDetails } from 'types/product.interface';
 
 const AddToCart = ({ product }: IProductDetails) => {
-  const { addToCart, removeFromCart } = useActions();
+  const { addToCart } = useActions();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { items } = useCart();
   const currentItem = items.find(cartItem => cartItem.product.id == product.id);
   const isInCart = items.some(item => item.product.id == product.id);
   const router = useRouter();
   const { user } = useAuth();
-  const { resetCart } = useActions();
 
   const { mutate } = useMutation(
     ['create order'],
@@ -32,10 +31,8 @@ const AddToCart = ({ product }: IProductDetails) => {
         })),
       }),
     {
-      onSuccess: () => {
-        router.push('/my-orders');
-
-        setTimeout(() => resetCart(), 500);
+      onSuccess: ({ data }) => {
+        router.push(`/checkout/${data.id}`);
       },
     },
   );

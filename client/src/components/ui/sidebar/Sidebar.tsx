@@ -20,7 +20,7 @@ const Sidebar = ({ categories }: ISidebar) => {
   const mediaMatches = useMediaQuery('(min-width: 700px)');
 
   return (
-    <aside className="w-full smm:fixed left-0 bottom-0 smm:h-bodyHeight smm:w-[210px] md:w-[250px] lg:w-[300px] bg-mainDark pt-[84px] px-3 pb-2 smm:py-5">
+    <aside className="w-full smm:fixed left-0 bottom-0 smm:h-bodyHeight smm:w-[210px]  xl:w-[300px] bg-mainDark pt-[84px] px-2 pb-2 smm:py-5">
       {mediaMatches && (
         <p className="text-textSecondary text-lg mb-3 ml-3">Категорії</p>
       )}

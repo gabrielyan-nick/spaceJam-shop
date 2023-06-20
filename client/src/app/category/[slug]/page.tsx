@@ -1,3 +1,4 @@
+import cn from 'clsx';
 import { Catalog, Heading } from 'components';
 import Footer from 'components/ui/Footer';
 import { Metadata, NextPage } from 'next';
@@ -37,7 +38,7 @@ const CategoryPage = async ({ params }: IParams) => {
   return (
     <>
       <main className="main">
-        <Heading className="ml-5">{data.category.name}</Heading>
+        <Heading className="sx:ml-5 mb-3 sx:mb-0">{data.category.name}</Heading>
         <Catalog length={data.products.length} slug={data.category.slug} />
       </main>
       <Footer />

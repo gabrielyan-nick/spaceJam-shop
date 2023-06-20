@@ -1,8 +1,9 @@
-input[type='radio'] {
+.radio {
   &:checked + label {
     background-color: #610094;
   }
   &:disabled + label {
     color: #4f8385;
   }
+  @apply sr-only;
 }

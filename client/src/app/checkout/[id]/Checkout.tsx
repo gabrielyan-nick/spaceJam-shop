@@ -1,46 +1,34 @@
 'use client';
 
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import CheckoutItem from 'app/checkout/[id]/CheckoutItem';
-import cn from 'clsx';
+import CheckoutRadioBtns from '../../../components/ui/radio/RadioBtns';
+import RadioBtns from '../../../components/ui/radio/RadioBtns';
+import CheckoutItem from './CheckoutItem';
+import { useMutation } from '@tanstack/react-query';
 import { Button, Heading, Loader, Modal } from 'components';
-import CheckoutRadioBtns from 'components/ui/radio/RadioBtns';
-import RadioBtns from 'components/ui/radio/RadioBtns';
-import { statusObj } from 'data';
+import { AttentionIcon } from 'components/ui/svg';
 import { useActions } from 'hooks/useActions';
 import useCart from 'hooks/useCart';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import OrderService from 'services/order.service';
-import { EnumOrderStatus, IOrder } from 'types/order.interface';
-import formatDate from 'utils/date-format';
+import { EnumOrderStatus } from 'types/order.interface';
 
-interface IOrderData {
-  data: IOrder;
-}
-
-const Order = ({ data }: IOrderData) => {
-  const [isFullShow, setIsFullShow] = useState(false);
+const Checkout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { items, total } = useCart();
   const router = useRouter();
   const { resetCart } = useActions();
-  const queryClient = useQueryClient();
-
-  const onToggleShow = () => setIsFullShow(isFullShow => !isFullShow);
+  const pathname = usePathname();
+  const orderId = pathname.split('/')[2];
 
   const { mutate, isLoading } = useMutation(
     ['confirm order'],
     () =>
-      OrderService.updateStatus({
-        orderId: data.id,
-        status: EnumOrderStatus.SHIPPED,
-      }),
+      OrderService.updateStatus({ orderId, status: EnumOrderStatus.SHIPPED }),
     {
       onSuccess: () => {
         onOpenModal();
-        queryClient.invalidateQueries({ queryKey: ['my orders'] });
         resetCart();
-        setIsFullShow(false);
       },
     },
   );
@@ -57,31 +45,13 @@ const Order = ({ data }: IOrderData) => {
 
   return (
     <>
-      <div className="bg-mainDark rounded-md ">
-        <div
-          onClick={onToggleShow}
-          className={cn(
-            'flex justify-between  px-3 py-4 hover:bg-[#491f61] transition-colors cursor-pointer',
-            {
-              'bg-mainDark rounded-md': !isFullShow,
-              'bg-[#491f61] rounded-t-md': isFullShow,
-            },
-          )}
-        >
-          <span>#{data.id.slice(-6)}</span>
-          <span>{statusObj[data.status]}</span>
-          <span>{formatDate(data.createdAt)}</span>
-          <span className="text-lg">
-            {data.totalPrice}
-            <span className="text-textSecondary text-base ml-1.5">грн.</span>
-          </span>
-        </div>
-        {isFullShow && (
-          <div className="px-3 pb-3 pt-8">
-            <ul className="space-y-3">
-              {data.items.map(item => (
+      <section className="pl-5">
+        <Heading>Замовлення</Heading>
+        {items.length ? (
+          <div className="mt-10 max-w-[900px] bg-mainDark p-3 rounded-md">
+            <ul className=" space-y-3">
+              {items.map(item => (
                 <CheckoutItem
-                  isDelBtn={false}
                   key={item.id}
                   product={item.product}
                   itemId={item.id}
@@ -97,28 +67,27 @@ const Order = ({ data }: IOrderData) => {
             <RadioBtns
               label="Оплата"
               values={['Готівка', 'Банківська карта']}
-              warningText="На даний момент доступна тільки оплата готівкою при отриманні"
               radioName="pay"
+              warningText="На даний момент доступна тільки оплата готівкою при отриманні"
             />
             <div className="flex justify-end items-center mt-10">
               <p className="text-textSecondary text-xl mr-4">
                 {`Загальна сума: `}
-                <span className="text-mainText mr-2">{data.totalPrice}</span>
-                грн.
+                <span className="text-mainText mr-2">{total}</span>грн.
               </p>
-              {data.status !== EnumOrderStatus.SHIPPED && (
-                <Button
-                  onClick={() => mutate()}
-                  variant="auth-btn"
-                  className="min-w-[230px]"
-                >
-                  {isLoading ? <Loader /> : 'Оформити замовлення'}
-                </Button>
-              )}
+              <Button
+                onClick={() => mutate()}
+                variant="auth-btn"
+                className="min-w-[230px]"
+              >
+                {isLoading ? <Loader /> : 'Оформити замовлення'}
+              </Button>
             </div>
           </div>
+        ) : (
+          <p className="mt-10 text-slate-500 text-lg">Немає товарів</p>
         )}
-      </div>
+      </section>
 
       <Modal isOpen={isModalOpen} onClose={onCloseModal}>
         <div className="px-7 ">
@@ -126,7 +95,7 @@ const Order = ({ data }: IOrderData) => {
           <p className="mt-5 text-lg">
             Замовлення #
             <span className="text-green-500 text-xl font-medium">
-              {data.id.slice(-6)}
+              {orderId.slice(-6)}
             </span>{' '}
             оформлено.
             <br />
@@ -146,4 +115,4 @@ const Order = ({ data }: IOrderData) => {
   );
 };
 
-export default Order;
+export default Checkout;

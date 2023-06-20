@@ -28,7 +28,9 @@ export const theme = {
     screens: {
       sxx: '400px',
       sx: '530px',
+      600: '600px',
       smm: '700px',
+      885: '885px',
       mdd: '1000px',
       xxl: '1350px',
     },

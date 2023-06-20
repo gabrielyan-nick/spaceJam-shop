@@ -12,7 +12,7 @@ const OrderService = {
   },
 
   async updateStatus(data: IUpdateOrderStatus) {
-    return instance.post<IOrder>(ordersUrl('/status'), data);
+    return instance.post<IOrder>(ordersUrl('status'), data);
   },
 };
 

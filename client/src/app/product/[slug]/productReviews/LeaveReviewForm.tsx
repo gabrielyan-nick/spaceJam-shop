@@ -43,7 +43,7 @@ const LeaveReviewForm = ({ productId, closeModal }: ILeaveReviewForm) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="px-7">
+    <form onSubmit={handleSubmit(onSubmit)} className="px-2 sxx:px-7">
       <Heading className="text-center">Залиште відгук</Heading>
       <div className="mt-5">
         <Controller

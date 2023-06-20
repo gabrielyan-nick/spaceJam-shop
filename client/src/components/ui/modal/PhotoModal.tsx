@@ -72,7 +72,7 @@ const PhotoModal = ({
       <div className="fixed inset-0 flex items-center justify-center z-40 bg-modalOverlay animate-overlay">
         <div
           ref={photoRef}
-          className="min-w-[43%] max-w-[95%] max-h-[97%] rounded-md bg-secondaryDark animate-modalOpen relative z-[+1]"
+          className="min-w-[43%] max-w-[85%] 600:max-w-[95%] max-h-[97%] rounded-md bg-secondaryDark animate-modalOpen relative z-[+1]"
         >
           <button
             className="absolute top-1 right-1 p-0.5 rounded-md bg-darkPurple hover:bg-purple-900 active:bg-purple-950 transition-colors duration-200"

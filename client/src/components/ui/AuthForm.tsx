@@ -90,7 +90,7 @@ const AuthForm = ({ onClose }: IAuthForm) => {
       {formType === EnumAuth.Login ? (
         <div className="animate-open">
           <Heading className="text-center">Вхід в акаунт</Heading>
-          <form className="mt-5 px-7" onSubmit={handleSubmit(onSubmit)}>
+          <form className="mt-5 px-2 sxx:px-7" onSubmit={handleSubmit(onSubmit)}>
             <Field
               label="Email"
               error={
@@ -190,7 +190,7 @@ export default AuthForm;
 
 const GoogleBtn = () => {
   return (
-    <div className="px-7 mt-4">
+    <div className="px-2 sxx:px-7 mt-4">
       <Button variant="google-btn" className="w-4/6 m-auto">
         <Link
           className="w-full flex justify-center items-center text-base"
