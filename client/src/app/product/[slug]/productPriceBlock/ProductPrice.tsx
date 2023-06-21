@@ -33,7 +33,7 @@ const ProductPrice = ({ className, product }: IProductDetails) => {
       </div>
       <div className="mt-2">
         <p className="text-textSecondary text-sm ml-1">Доставка</p>
-        <div className="bg-secondaryDark rounded-2xl p-0.5 max-w-[260px]">
+        <div className="bg-secondaryDark rounded-2xl p-0.5 w-max">
           <input
             className={styles.radio}
             type="radio"
