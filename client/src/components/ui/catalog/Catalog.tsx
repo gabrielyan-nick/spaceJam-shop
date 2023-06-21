@@ -59,7 +59,7 @@ const Catalog = ({ length, slug = '' }: ICatalog) => {
           <SortDropdown sortType={sortType} setSortType={setSortType} />
         </div>
       ) : (
-        <p className="ml-5 mt-10 text-slate-500 text-lg">Товари не знайдені</p>
+        <p className="sx:ml-5 mt-10 text-slate-500 text-lg">Товари не знайдені</p>
       )}
       <div className="flex flex-col items-center sx:items-stretch sx:grid grid-cols-2 lg:grid-cols-3 xxl:grid-cols-4 gap-y-8 gap-x-8 justify-items-center 2xl:justify-items-start">
         {!!length &&

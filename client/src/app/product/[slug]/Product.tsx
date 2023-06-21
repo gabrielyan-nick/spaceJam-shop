@@ -29,6 +29,7 @@ const Product = ({ initialProduct, slug = '' }: IProductPage) => {
   );
 
   return (
+    
     <div>
       <Heading className="mb-1">{data.name}</Heading>
       <Link

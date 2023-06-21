@@ -18,34 +18,31 @@ const CheckoutItem = ({ product, itemId, isDelBtn = true }: ICheckoutItem) => {
   const remove = () => removeFromCart({ id: itemId });
 
   return (
-    <li className="flex items-center">
+    <li className="flex gap-3 items-center">
       <Link className="shrink-0" href={`/product/${product.slug}`}>
         <Image
           src={product.images[0]}
           width={150}
           height={100}
           alt={product.name}
-          style={{
-            objectFit: 'cover',
-            height: '100px',
-            width: '150px',
-            borderRadius: '5px',
-          }}
+          className="object-cover w-[100px] sx:w-[150px] h-[65px] sx:h-[100px] rounded-md"
         />
       </Link>
-      <div className="ml-3">
+      <div>
         <Link href={`/product/${product.slug}`}>
-          <p className="text-lg hover:text-textHover transition-colors">
+          <p className="text-sm sxx:text-base sx:text-lg hover:text-textHover transition-colors">
             {product.name}
           </p>
         </Link>
-        <p className="text-textSecondary mt-1.5">{product.category.name}</p>
+        <p className="text-textSecondary text-sm sxx:text-base sx:mt-1.5">
+          {product.category.name}
+        </p>
       </div>
-      <div className="ml-auto text-lg">
+      <div className="ml-auto text-sm sxx:text-base md:text-lg">
         {product.price} <span className="text-textSecondary ml-1"> грн.</span>
       </div>
       {isDelBtn && (
-        <button onClick={remove} className="ml-4 shrink-0">
+        <button onClick={remove} className="hidden sxx:block ml-4 shrink-0">
           <DeleteIcon />
         </button>
       )}

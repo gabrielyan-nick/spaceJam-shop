@@ -83,7 +83,7 @@ const HeaderCart = () => {
           <div
             ref={ref}
             className={cn(
-              'pt-1 pb-2 pl-2 pr-1 animate-open absolute min-w-[220px] w-max max-w-[300px] sx:max-w-[315px] min-h-[100px] top-[40px] rounded-lg -right-[115px] sxx:-right-[110px] smm:-right-3 bg-popupBg shadow-[#0000004f] shadow-md',
+              'pt-1 pb-2 pl-2 pr-1 animate-open absolute min-w-[220px] w-max max-w-[300px] sx:max-w-[315px] min-h-[100px] top-[40px] rounded-lg -right-[125px] sxx:-right-[110px] smm:-right-3 bg-popupBg shadow-[#0000004f] shadow-md',
             )}
           >
             <p className="text-center text-lg font-medium mb-3">Кошик</p>

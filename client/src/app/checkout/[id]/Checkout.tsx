@@ -45,7 +45,7 @@ const Checkout = () => {
 
   return (
     <>
-      <section className="pl-5">
+      <section className="xl:pl-5">
         <Heading>Замовлення</Heading>
         {items.length ? (
           <div className="mt-10 max-w-[900px] bg-mainDark p-3 rounded-md">
@@ -62,16 +62,14 @@ const Checkout = () => {
               label="Доставка"
               values={['Самовивіз', 'Космічна пошта']}
               warningText="На даний момент доступний тільки самовивіз"
-              radioName="delivery"
             />
             <RadioBtns
               label="Оплата"
               values={['Готівка', 'Банківська карта']}
-              radioName="pay"
               warningText="На даний момент доступна тільки оплата готівкою при отриманні"
             />
-            <div className="flex justify-end items-center mt-10">
-              <p className="text-textSecondary text-xl mr-4">
+            <div className="flex flex-col 600:flex-row justify-end items-end 600:items-center mt-10">
+              <p className="text-textSecondary text-xl mr-4 mb-3 600:mb-0">
                 {`Загальна сума: `}
                 <span className="text-mainText mr-2">{total}</span>грн.
               </p>

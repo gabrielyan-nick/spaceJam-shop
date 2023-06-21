@@ -36,10 +36,10 @@ const CatalogItem: FC<{ product: IProduct }> = ({ product }) => {
           <Image
             src={product.images[0]}
             alt={product.name}
-            width={300}
+            width={290}
             height={190}
-            style={{ objectFit: 'cover', height: '100%', width: '100%' }}
-            className="transform-scale-100 hover:scale-105 transition-transform duration-1000"
+            priority
+            className="h-full w-full object-cover transform-scale-100 hover:scale-105 transition-transform duration-1000"
           />
         </Link>
       </div>

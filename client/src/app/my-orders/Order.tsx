@@ -61,17 +61,17 @@ const Order = ({ data }: IOrderData) => {
         <div
           onClick={onToggleShow}
           className={cn(
-            'flex justify-between  px-3 py-4 hover:bg-[#491f61] transition-colors cursor-pointer',
+            'flex justify-between gap-4 px-3 py-4 hover:bg-[#491f61] transition-colors cursor-pointer',
             {
               'bg-mainDark rounded-md': !isFullShow,
               'bg-[#491f61] rounded-t-md': isFullShow,
             },
           )}
         >
-          <span>#{data.id.slice(-6)}</span>
-          <span>{statusObj[data.status]}</span>
-          <span>{formatDate(data.createdAt)}</span>
-          <span className="text-lg">
+          <span className='text-sm sxx:text-base'>#{data.id.slice(-6)}</span>
+          <span className='text-sm sxx:text-base'>{statusObj[data.status]}</span>
+          <span className="hidden sx:block">{formatDate(data.createdAt)}</span>
+          <span className="text-sm sxx:text-base md:text-lg">
             {data.totalPrice}
             <span className="text-textSecondary text-base ml-1.5">грн.</span>
           </span>
@@ -92,16 +92,14 @@ const Order = ({ data }: IOrderData) => {
               label="Доставка"
               values={['Самовивіз', 'Космічна пошта']}
               warningText="На даний момент доступний тільки самовивіз"
-              radioName="delivery"
             />
             <RadioBtns
               label="Оплата"
               values={['Готівка', 'Банківська карта']}
               warningText="На даний момент доступна тільки оплата готівкою при отриманні"
-              radioName="pay"
             />
-            <div className="flex justify-end items-center mt-10">
-              <p className="text-textSecondary text-xl mr-4">
+            <div className="flex flex-col 600:flex-row justify-end items-end 600:items-center mt-10">
+              <p className="text-textSecondary text-xl mr-4 mb-3 600:mb-0">
                 {`Загальна сума: `}
                 <span className="text-mainText mr-2">{data.totalPrice}</span>
                 грн.

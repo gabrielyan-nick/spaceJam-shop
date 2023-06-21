@@ -6,18 +6,16 @@ interface IRadioBtns {
   label: string;
   values: string[];
   warningText: string;
-  radioName: string;
 }
 
-const RadioBtns = ({ label, values, warningText, radioName }: IRadioBtns) => {
+const RadioBtns = ({ label, values, warningText }: IRadioBtns) => {
   return (
     <div className="mt-7">
       <span className="text-lg">{label}</span>
-      <div className="bg-secondaryDark rounded-2xl p-0.5 max-w-[247px] mt-3">
+      <div className="bg-secondaryDark rounded-2xl p-0.5 w-max mt-3 ">
         <input
           className={styles.radio}
           type="radio"
-          name={radioName}
           value={values[0]}
           id="self"
           checked
@@ -33,21 +31,22 @@ const RadioBtns = ({ label, values, warningText, radioName }: IRadioBtns) => {
         <input
           className={styles.radio}
           type="radio"
-          name={radioName}
           value={values[1]}
           id="post"
           disabled
         />
         <label
           htmlFor="post"
-          className="cursor-pointer px-1 py-0.5 rounded-xl transition-colors"
+          className="cursor-pointer px-2 py-0.5 rounded-xl transition-colors"
         >
           {values[1]}
         </label>
       </div>
       <div className="flex mt-1 items-center">
         <AttentionIcon size={18} className="shrink-0 ml-1" />
-        <p className="text-textSecondary ml-1">{warningText}</p>
+        <p className="text-textSecondary text-sm sxx:text-base ml-1">
+          {warningText}
+        </p>
       </div>
     </div>
   );
