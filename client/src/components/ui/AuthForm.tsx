@@ -1,8 +1,8 @@
 'use client';
 
-import Button from './button/Button';
 import Heading from './Heading';
 import Loader from './Loader';
+import Button from './button/Button';
 import Field from './input/Field';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useActions } from 'hooks/useActions';
@@ -90,7 +90,10 @@ const AuthForm = ({ onClose }: IAuthForm) => {
       {formType === EnumAuth.Login ? (
         <div className="animate-open">
           <Heading className="text-center">Вхід в акаунт</Heading>
-          <form className="mt-5 px-2 sxx:px-7" onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className="mt-5 px-2 sxx:px-7"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <Field
               label="Email"
               error={
@@ -194,7 +197,7 @@ const GoogleBtn = () => {
       <Button variant="google-btn" className="w-4/6 m-auto">
         <Link
           className="w-full flex justify-center items-center text-base"
-          href={'http://localhost:4200/api/auth/google'}
+          href={`${process.env.SERVER_URL}/auth/google`}
         >
           Увійти{' '}
           <svg
