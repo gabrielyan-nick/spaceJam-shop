@@ -60,7 +60,7 @@ const ProductPrice = ({ className, product }: IProductDetails) => {
           />
           <label
             htmlFor="post"
-            className="cursor-pointer px-1 py-0.5 rounded-xl transition-colors"
+            className="cursor-pointer px-2 py-0.5 rounded-xl transition-colors"
           >
             Космічна пошта
           </label>
