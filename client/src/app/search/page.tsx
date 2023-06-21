@@ -6,11 +6,6 @@ import { useEffect } from 'react';
 import ProductsService from 'services/product.service';
 import { useAppDispatch } from 'store/hooks';
 
-export const metadata: Metadata = {
-  title: 'Пошук | SpaceJam',
-  description: '',
-};
-
 type TMeta = {
   params: { id: string };
   searchParams: { [key: string]: string };

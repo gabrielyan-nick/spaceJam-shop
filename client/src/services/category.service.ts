@@ -1,6 +1,6 @@
 import { instance } from 'api/api.interceptor';
 import { categoriesUrl } from 'config/url';
-import { ICategory, UpdateCategory } from 'types/category.interface';
+import { ICategory } from 'types/category.interface';
 
 const CategoryService = {
   async getAll() {

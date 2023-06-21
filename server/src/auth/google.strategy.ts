@@ -9,7 +9,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy) {
     super({
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: 'http://localhost:4200/api/auth/google/callback',
+      callbackURL: `${process.env.SERVER_URL}/auth/google/callback`,
       scope: ['email', 'profile'],
     });
   }
