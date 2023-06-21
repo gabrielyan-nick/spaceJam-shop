@@ -80,7 +80,7 @@ const UserWidget = () => {
               </li>
               {mediaMatches && (
                 <li>
-                  <Button variant="popup-btn">
+                  <Button variant="popup-btn" onClick={() => togglePopup()}>
                     <Link
                       className="flex justify-between gap-2 items-center w-full"
                       href={user ? '/favorites' : pathname}

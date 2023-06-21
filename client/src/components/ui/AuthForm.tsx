@@ -140,7 +140,7 @@ const AuthForm = ({ onClose }: IAuthForm) => {
       ) : (
         <div className="animate-modalOpen">
           <Heading className="text-center">Реэстрація</Heading>
-          <form className="mt-5 px-7" onSubmit={handleSubmit(onSubmit)}>
+          <form className="mt-5 px-2 sxx:px-7" onSubmit={handleSubmit(onSubmit)}>
             <Field
               label="Email"
               error={

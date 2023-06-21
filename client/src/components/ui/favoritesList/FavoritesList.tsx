@@ -10,7 +10,7 @@ const FavoritesList = () => {
   const { profile, isLoading } = useProfile();
   return (
     <>
-      <Heading className="ml-5 mb-5">Улюблене</Heading>
+      <Heading className="md:ml-5 mb-5">Улюблене</Heading>
       <section>
         {isLoading ? (
           <div className="h-96 flex items-center justify-center">
