@@ -4,7 +4,6 @@ import {
   Get,
   HttpCode,
   Post,
-  Redirect,
   Req,
   Res,
   UseGuards,
@@ -51,7 +50,7 @@ export class AuthController {
   @Get('google/callback')
   @UseGuards(AuthGuard('google'))
   async googleLoginRedirect(@Req() req, @Res() res) {
-    const url = `http://localhost:3000/google-redirect?data=${encodeURIComponent(
+    const url = `https://spacejam-shop.vercel.app/google-redirect?data=${encodeURIComponent(
       JSON.stringify(req.user),
     )}`;
 
