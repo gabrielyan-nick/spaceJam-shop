@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useActions } from 'hooks/useActions';
 import { useAuth } from 'hooks/useAuth';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { EnumAuth, IAuth, IEmailPassword } from 'store/user/user.interface';
@@ -140,7 +141,10 @@ const AuthForm = ({ onClose }: IAuthForm) => {
       ) : (
         <div className="animate-modalOpen">
           <Heading className="text-center">Реэстрація</Heading>
-          <form className="mt-5 px-2 sxx:px-7" onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className="mt-5 px-2 sxx:px-7"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <Field
               label="Email"
               error={

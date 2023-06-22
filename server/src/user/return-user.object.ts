@@ -20,6 +20,7 @@ export const returnUserFavoritesObject = {
       category: {
         select: {
           slug: true,
+          name: true,
         },
       },
       reviews: true,

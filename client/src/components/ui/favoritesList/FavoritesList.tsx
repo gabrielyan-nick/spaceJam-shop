@@ -8,6 +8,7 @@ import React from 'react';
 
 const FavoritesList = () => {
   const { profile, isLoading } = useProfile();
+  console.log(profile)
   return (
     <>
       <Heading className="md:ml-5 mb-5">Улюблене</Heading>
