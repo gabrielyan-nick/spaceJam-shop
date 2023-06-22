@@ -1,16 +1,17 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect } from 'react';
 import { StorageService } from 'services/storage.service';
 
 const GoogleRedirect = () => {
   const params = useSearchParams();
+  const router = useRouter();
 
   useEffect(() => {
     const data: string = params.get('data') as string;
     StorageService.saveToStorage(JSON.parse(data));
-    history.go(-2);
+    router.push('/');
   }, []);
 
   return <></>;
