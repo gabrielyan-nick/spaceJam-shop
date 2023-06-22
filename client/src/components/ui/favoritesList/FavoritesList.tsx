@@ -8,14 +8,13 @@ import React from 'react';
 
 const FavoritesList = () => {
   const { profile, isLoading } = useProfile();
-  console.log(profile)
   return (
     <>
       <Heading className="md:ml-5 mb-5">Улюблене</Heading>
       <section>
         {isLoading ? (
           <div className="h-96 flex items-center justify-center">
-            <Loader size='md'/>
+            <Loader size="md" />
           </div>
         ) : !isLoading && !!profile.favorites.length ? (
           <div className="flex flex-col items-center sx:items-stretch sx:grid grid-cols-2 lg:grid-cols-3 xxl:grid-cols-4 gap-y-8 gap-x-8 justify-items-center 2xl:justify-items-start">
