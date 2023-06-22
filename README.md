@@ -15,7 +15,7 @@ This is an online store pet project developed to showcase my skills in web devel
 
 **Technologies Used**
 
-**Frontend**
+*Frontend*
 
 - Next.js 13
 - Tailwind
