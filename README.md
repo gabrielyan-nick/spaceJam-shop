@@ -15,22 +15,19 @@ This is an online store pet project developed to showcase my skills in web devel
 
 **Technologies Used**
 
-*Frontend*
-
+*Frontend:*
 - Next.js 13
 - Tailwind
 - Redux Toolkit
 - React Query
 
-**Backend**
-
+*Backend:*
 - Node.js
 - NestJS
 - MongoDB
 - Prisma
 
-
-**Other tools and libraries:**
+*Other tools and libraries:*
 - React hook form
 - Axios
 - Redux persist
