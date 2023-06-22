@@ -1,6 +1,6 @@
-# SpaceJam shop
+# SpaceJam shop full-stack TypeScript project
 
-This is an online store pet project developed to showcase my skills in web development. This is a full-stack TypeScript project developed using Next.js for the frontend and Nest.js for the backend.
+This is an online store pet project developed to showcase my skills in web development. The project is developed using TypeScript, with Next.js for the frontend and Nest.js for the backend. 
 
 [Deploy on Vercel](https://spacejam-shop.vercel.app)
 
