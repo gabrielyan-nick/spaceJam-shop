@@ -1,6 +1,3 @@
-import { default as plugin } from 'tailwindcss';
-import { default as twColors } from 'tailwindcss/colors';
-
 /** @type {import('tailwindcss').Config} */
 export const content = ['./src/**/*.{js,ts,jsx,tsx,mdx}'];
 export const theme = {
